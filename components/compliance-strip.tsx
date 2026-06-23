@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ShieldCheck, FileText, MagnifyingGlass, Scales } from "@phosphor-icons/react/dist/ssr";
 
@@ -79,9 +80,9 @@ export function ComplianceStrip() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative z-10 bg-surface rounded-t-[40px] shadow-[0_-20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_-20px_50px_rgba(0,0,0,0.8)] pt-24 pb-20 px-6 mt-[-2px]"
+      className="relative z-10 bg-surface pt-24 pb-20 px-6"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
             Built For Investors Who Care About Compliance
@@ -91,37 +92,29 @@ export function ComplianceStrip() {
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CARDS.map((card, i) => (
-            <div 
-              key={i} 
-              className="group p-8 rounded-2xl bg-background border border-border-subtle hover:border-gold/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <card.icon 
-                size={40} 
-                weight="duotone" 
-                className="text-gold mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" 
-              />
-              
-              <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-              
-              {card.status ? (
-                <div className="inline-flex items-center gap-2 mb-3">
-                  <span className="relative flex h-3 w-3 items-center justify-center">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-                  </span>
-                  <span className="text-sm font-semibold text-gold tracking-wide uppercase">Status: {card.status}</span>
-                </div>
-              ) : null}
-              
-              <p className="text-muted-text text-sm leading-relaxed">
-                {card.desc || card.text}
-              </p>
-            </div>
-          ))}
+        <div ref={cardsRef} className="w-full mt-10">
+          {/* Visible Image for Users */}
+          <div className="w-full relative rounded-3xl overflow-hidden shadow-2xl border border-border-subtle bg-white">
+            <Image 
+              src="/register.png" 
+              alt="Rent4uSolutions Compliance Registrations including PRS and ICO" 
+              width={1920}
+              height={600}
+              className="w-full h-auto object-cover" 
+              unoptimized
+            />
+          </div>
+
+          {/* Hidden Content for SEO */}
+          <div className="sr-only">
+            {CARDS.map((card, i) => (
+              <div key={i}>
+                <h3>{card.title}</h3>
+                {card.status ? <span>Status: {card.status}</span> : null}
+                <p>{card.desc || card.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.94191in" height="4.44593in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 797 597"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#B3B3B3;stroke-width:0.402506}
+    .str0 {stroke:white;stroke-width:0.402506}
+    .fil1 {fill:none}
+    .fil0 {fill:#000050}
+    .fil3 {fill:white}
+    .fil2 {fill:url(#id3)}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <path d="M53 0l576 0c29,0 53,24 53,53l0 383c0,29 -24,52 -53,52l-576 0c-29,0 -53,-23 -53,-52l0 -383c0,-29 24,-53 53,-53z"/>
+   </clipPath>
+    <clipPath id="id1">
+     <path d="M53 0l576 0c29,0 53,24 53,53l0 383c0,29 -24,52 -53,52l-576 0c-29,0 -53,-23 -53,-52l0 -383c0,-29 24,-53 53,-53z"/>
+    </clipPath>
+    <clipPath id="id2">
+     <path d="M53 0l576 0c29,0 53,24 53,53l0 383c0,29 -24,52 -53,52l-576 0c-29,0 -53,-23 -53,-52l0 -383c0,-29 24,-53 53,-53z"/>
+    </clipPath>
+  <linearGradient id="id3" gradientUnits="userSpaceOnUse" x1="360.778" y1="413.976" x2="507.594" y2="553.554">
+   <stop offset="0" style="stop-opacity:1; stop-color:#000050"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:blue"/>
+  </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M53 0l576 0c29,0 53,24 53,53l0 383c0,29 -24,52 -53,52l-576 0c-29,0 -53,-23 -53,-52l0 -383c0,-29 24,-53 53,-53z"/>
+  <g style="clip-path:url(#id0)">
+   <g id="_1668679117184">
+   </g>
+   <g style="clip-path:url(#id1)">
+    <image x="-93" y="0" width="868" height="488" xlink:href="card3_Images\card3_ImgID1.png"/>
+   </g>
+   <g style="clip-path:url(#id2)">
+   </g>
+  </g>
+  <path class="fil1" d="M53 0l576 0c29,0 53,24 53,53l0 383c0,29 -24,52 -53,52l-576 0c-29,0 -53,-23 -53,-52l0 -383c0,-29 24,-53 53,-53z"/>
+  <rect class="fil2 str0" x="106" y="371" width="656" height="225" rx="115" ry="48"/>
+  <circle class="fil3 str1" cx="746" cy="376" r="51"/>
+ </g>
+</svg>

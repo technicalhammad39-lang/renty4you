@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.96968in" height="4.44593in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1973 1469"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#B3B3B3;stroke-width:0.991386}
+    .str0 {stroke:white;stroke-width:0.991386}
+    .fil1 {fill:none}
+    .fil0 {fill:#000050}
+    .fil3 {fill:white}
+    .fil2 {fill:url(#id3)}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <path d="M129 0l1421 0c72,0 130,58 130,129l0 944c0,71 -58,130 -130,130l-1421 0c-71,0 -129,-59 -129,-130l0 -944c0,-71 58,-129 129,-129z"/>
+   </clipPath>
+    <clipPath id="id1">
+     <path d="M129 0l1421 0c72,0 130,58 130,129l0 944c0,71 -58,130 -130,130l-1421 0c-71,0 -129,-59 -129,-130l0 -944c0,-71 58,-129 129,-129z"/>
+    </clipPath>
+    <clipPath id="id2">
+     <path d="M129 0l1421 0c72,0 130,58 130,129l0 944c0,71 -58,130 -130,130l-1421 0c-71,0 -129,-59 -129,-130l0 -944c0,-71 58,-129 129,-129z"/>
+    </clipPath>
+  <linearGradient id="id3" gradientUnits="userSpaceOnUse" x1="888.609" y1="1019.64" x2="1250.22" y2="1363.42">
+   <stop offset="0" style="stop-opacity:1; stop-color:#000050"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:blue"/>
+  </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M129 0l1421 0c72,0 130,58 130,129l0 944c0,71 -58,130 -130,130l-1421 0c-71,0 -129,-59 -129,-130l0 -944c0,-71 58,-129 129,-129z"/>
+  <g style="clip-path:url(#id0)">
+   <g id="_1668679118368">
+   </g>
+   <g style="clip-path:url(#id1)">
+    <image x="-62" y="0" width="1804" height="1203" xlink:href="card1_Images\card1_ImgID1.png"/>
+   </g>
+   <g style="clip-path:url(#id2)">
+   </g>
+  </g>
+  <path class="fil1" d="M129 0l1421 0c72,0 130,58 130,129l0 944c0,71 -58,130 -130,130l-1421 0c-71,0 -129,-59 -129,-130l0 -944c0,-71 58,-129 129,-129z"/>
+  <rect class="fil2 str0" x="262" y="914" width="1616" height="554" rx="282" ry="119"/>
+  <circle class="fil3 str1" cx="1847" cy="927" r="126"/>
+ </g>
+</svg>

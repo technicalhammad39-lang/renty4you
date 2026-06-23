@@ -18,6 +18,8 @@ interface NavLink {
   children?: SubLink[];
 }
 
+import { SearchBar } from "@/components/search-bar";
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,15 +93,15 @@ export function Navbar() {
   return (
     <div className="fixed top-4 left-0 right-0 z-50 px-4 md:px-6 transition-all duration-300">
       <nav
-        className={`max-w-7xl mx-auto rounded-full border transition-all duration-300 flex items-center justify-between ${
+        className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled
-            ? "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-white/20 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-3 px-6 md:px-8"
-            : "bg-white/75 dark:bg-slate-900/60 backdrop-blur-md border-white/15 dark:border-white/5 shadow-md py-4 px-6 md:px-10"
+            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-3 px-6 md:px-8"
+            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-4 px-6 md:px-10"
         }`}
       >
         <Link href="#" className="flex items-center gap-1 group">
           <Image
-            src={mounted && theme === "dark" ? "/Rent4you-dark-mode.png" : "/Rent4you-light-mode.png"}
+            src="/Rent4you-light-mode.png"
             alt="Rent4uSolutions"
             width={140}
             height={32}
@@ -130,7 +132,7 @@ export function Navbar() {
                         if (link.name === "Strategies") setStrategiesOpen(!strategiesOpen);
                         if (link.name === "Deal Packs") setDealPacksOpen(!dealPacksOpen);
                       }}
-                      className="flex items-center gap-1 text-xs lg:text-sm font-medium text-foreground/80 hover:text-gold transition-colors cursor-pointer"
+                      className="flex items-center gap-1 text-xs lg:text-sm font-medium text-slate-900/80 hover:text-gold transition-colors cursor-pointer"
                     >
                       <span>{link.name}</span>
                       <svg
@@ -156,7 +158,7 @@ export function Navbar() {
                             <Link
                               key={child.name}
                               href={child.href}
-                              className="block px-4 py-2.5 text-xs lg:text-sm font-medium text-foreground/80 hover:bg-gold/10 hover:text-gold rounded-xl transition-all"
+                              className="block px-4 py-2.5 text-xs lg:text-sm font-medium text-slate-900/80 hover:bg-gold/10 hover:text-gold rounded-xl transition-all"
                             >
                               {child.name}
                             </Link>
@@ -172,7 +174,7 @@ export function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-xs lg:text-sm font-medium text-foreground/80 hover:text-gold transition-colors relative group py-1"
+                    className="text-xs lg:text-sm font-medium text-slate-900/80 hover:text-gold transition-colors relative group py-1"
                   >
                     {link.name}
                     <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
@@ -183,10 +185,11 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-4 border-l border-border-subtle pl-4">
+            <SearchBar variant="compact" />
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-9 h-9 rounded-full bg-background hover:bg-gold/10 border border-border-subtle flex items-center justify-center text-muted-text hover:text-gold transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-white hover:bg-gold/10 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-gold transition-colors cursor-pointer"
                 aria-label="Toggle Theme"
               >
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -206,7 +209,7 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-9 h-9 rounded-full bg-background/50 border border-border-subtle flex items-center justify-center text-muted-text hover:text-gold transition-colors"
+              className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-gold transition-colors"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -214,7 +217,7 @@ export function Navbar() {
           )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="w-9 h-9 rounded-full bg-background/50 border border-border-subtle flex items-center justify-center text-foreground hover:text-gold focus:outline-none transition-colors"
+            className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-900 hover:text-gold focus:outline-none transition-colors"
           >
             {mobileMenuOpen ? <X size={20} /> : <List size={20} />}
           </button>
@@ -222,7 +225,7 @@ export function Navbar() {
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-[calc(100%+0.75rem)] left-4 right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-white/20 dark:border-white/10 px-6 py-6 shadow-2xl rounded-3xl flex flex-col gap-4 animate-[fadeIn_0.2s_ease-out]">
+          <div className="md:hidden absolute top-[calc(100%+0.75rem)] left-4 right-4 bg-white/95  backdrop-blur-xl border border-white/20 px-6 py-6 shadow-2xl rounded-3xl flex flex-col gap-4 animate-[fadeIn_0.2s_ease-out]">
             {navLinks.map((link) => {
               const hasChildren = !!link.children;
               const isAccordionOpen = link.name === "Strategies" ? mobileStrategiesOpen : mobileDealPacksOpen;
@@ -236,7 +239,7 @@ export function Navbar() {
                   <div key={link.name} className="flex flex-col border-b border-border-subtle/50 py-1">
                     <button
                       onClick={toggleAccordion}
-                      className="flex items-center justify-between text-base font-bold text-foreground py-2 hover:text-gold transition-colors w-full text-left"
+                      className="flex items-center justify-between text-base font-bold text-slate-900 py-2 hover:text-gold transition-colors w-full text-left"
                     >
                       <span>{link.name}</span>
                       <svg
@@ -255,13 +258,13 @@ export function Navbar() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden pl-4 flex flex-col gap-2 py-2 bg-black/5 dark:bg-white/5 rounded-xl mt-1"
+                          className="overflow-hidden pl-4 flex flex-col gap-2 py-2 bg-black/5  rounded-xl mt-1"
                         >
                           {link.children?.map((child) => (
                             <Link
                               key={child.name}
                               href={child.href}
-                              className="text-sm font-medium text-foreground/80 py-1.5 hover:text-gold transition-colors"
+                              className="text-sm font-medium text-slate-900/80 py-1.5 hover:text-gold transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {child.name}
@@ -278,7 +281,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-base font-semibold text-foreground py-2 border-b border-border-subtle/50 hover:text-gold transition-colors"
+                  className="text-base font-semibold text-slate-900 py-2 border-b border-border-subtle/50 hover:text-gold transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

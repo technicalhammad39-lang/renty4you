@@ -69,7 +69,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-0"></div>
       <div className="absolute inset-0 bg-black/20 z-0"></div>
 
-      <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 w-full">
+      <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12">
         <div ref={textRef} className="w-full text-white space-y-6">
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}

@@ -8,8 +8,8 @@ export function SampleDealPack() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="py-24 bg-surface relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-surface relative z-10 border-y border-border-subtle">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div className="relative w-full h-[600px] flex items-center justify-center">

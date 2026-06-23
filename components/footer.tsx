@@ -5,8 +5,8 @@ import { ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border-subtle pt-20 pb-10 relative z-10">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-surface py-12 border-t border-border-subtle relative z-10">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
           <div className="md:col-span-5 pr-0 md:pr-12">

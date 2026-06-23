@@ -33,7 +33,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" ref={sectionRef} className="py-24 bg-background relative z-10">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
             Simple, Transparent Sourcing Fees

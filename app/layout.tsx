@@ -19,12 +19,16 @@ export const metadata: Metadata = {
   }
 };
 
+import { SearchProvider } from '@/components/search-context';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={pjs.variable} suppressHydrationWarning>
       <body className="font-sans antialiased text-foreground bg-background" suppressHydrationWarning>
         <Providers>
-          {children}
+          <SearchProvider>
+            {children}
+          </SearchProvider>
         </Providers>
       </body>
     </html>

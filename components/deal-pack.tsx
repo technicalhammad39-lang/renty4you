@@ -71,8 +71,8 @@ export function DealPackDashboard() {
   }, []);
 
   return (
-    <section id="deal-packs" ref={sectionRef} className="py-24 bg-background relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="deal-packs" ref={sectionRef} className="py-24 bg-surface relative z-10 overflow-hidden">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
             Inside Every Deal Pack
