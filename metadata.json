@@ -1,0 +1,6 @@
+{
+  "name": "Rent4uSolutions",
+  "description": "Premium cinematic property sourcing website for a UK-based brand.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

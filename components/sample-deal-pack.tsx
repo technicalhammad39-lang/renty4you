@@ -1,0 +1,108 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { DownloadSimple, FileText, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+
+export function SampleDealPack() {
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <section className="py-24 bg-surface relative z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <div className="relative w-full h-[600px] flex items-center justify-center">
+            <div className="absolute inset-0 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+            
+            <div className="relative w-[80%] h-[90%] bg-background rounded-l-2xl border border-border-subtle shadow-2xl p-6 flex flex-col transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 overflow-hidden">
+              <div className="w-full flex justify-between items-center mb-6">
+                <div className="font-bold text-lg">Opportunity Report</div>
+                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                  <FileText className="text-gold" />
+                </div>
+              </div>
+              <div className="h-40 w-full mb-6 relative rounded-xl overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop" alt="Property mock" fill className="object-cover" />
+              </div>
+              <div className="w-3/4 h-4 bg-muted-text/20 rounded-full mb-4"></div>
+              <div className="w-1/2 h-4 bg-muted-text/20 rounded-full mb-8"></div>
+              <div className="grid grid-cols-2 gap-4 flex-grow">
+                 <div className="rounded-lg bg-surface border border-border-subtle p-3 flex flex-col justify-end">
+                    <div className="text-xs text-muted-text">Gross</div>
+                    <div className="font-bold">£3,200</div>
+                 </div>
+                 <div className="rounded-lg bg-surface border border-border-subtle p-3 flex flex-col justify-end">
+                    <div className="text-xs text-muted-text">Net ROI</div>
+                    <div className="font-bold text-gold">High</div>
+                 </div>
+              </div>
+            </div>
+
+            <div className="absolute -right-6 top-1/4 bg-background p-4 rounded-xl border border-border-subtle shadow-xl flex items-center gap-3 transform rotate-[5deg]">
+              <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
+                <CheckCircle weight="fill" className="text-green-500 text-xl" />
+              </div>
+              <div>
+                <div className="text-xs text-muted-text uppercase font-semibold">Strict Standard</div>
+                <div className="font-bold text-sm">Compliance Passed</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-md w-full mx-auto lg:mx-0">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+              Download A Sample Deal Pack
+            </h2>
+            <p className="text-lg text-muted-text mb-8">
+              See how a Rent4uSolutions opportunity is packaged before joining the investor list.
+            </p>
+
+            {submitted ? (
+              <div className="bg-gold/10 border border-gold/30 p-6 rounded-2xl flex flex-col items-center text-center">
+                <CheckCircle className="text-gold text-5xl mb-4" weight="fill" />
+                <h3 className="text-xl font-bold mb-2">Check Your Email</h3>
+                <p className="text-muted-text">We've just sent the sample deal pack to your inbox.</p>
+              </div>
+            ) : (
+              <form 
+                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                className="space-y-4 bg-background p-8 rounded-[32px] border border-border-subtle shadow-sm"
+              >
+                <div>
+                  <label htmlFor="name" className="sr-only">Full Name</label>
+                  <input id="name" required type="text" placeholder="Full Name" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                </div>
+                <div>
+                  <label htmlFor="email" className="sr-only">Email</label>
+                  <input id="email" required type="email" placeholder="Email Address" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="sr-only">Phone</label>
+                  <input id="phone" type="tel" placeholder="Phone Number (Optional)" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                </div>
+                <div>
+                  <label htmlFor="strategy" className="sr-only">Investment Strategy</label>
+                  <select defaultValue="" id="strategy" required className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors appearance-none text-foreground">
+                    <option value="" disabled>Investment Strategy</option>
+                    <option value="sa">Serviced Accommodation</option>
+                    <option value="council">Council Leasing</option>
+                    <option value="r2r">Rent-to-Rent</option>
+                    <option value="unsure">Not Sure Yet</option>
+                  </select>
+                </div>
+                <button type="submit" className="w-full py-4 bg-gold hover:bg-gold/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-lg">
+                  <DownloadSimple size={20} weight="bold" /> Get Sample Deal Pack
+                </button>
+                <p className="text-xs text-muted-text text-center mt-4">
+                  Your details are used only to send the sample pack and follow up on your sourcing enquiry.
+                </p>
+              </form>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
