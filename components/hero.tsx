@@ -44,7 +44,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="sticky top-0 left-0 w-full h-[82vh] min-h-[580px] overflow-hidden -z-10 bg-black">
+    <div ref={containerRef} className="sticky top-0 left-0 w-full h-[85vh] min-h-[620px] overflow-hidden z-0 bg-black">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentImage}
@@ -69,8 +69,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-0"></div>
       <div className="absolute inset-0 bg-black/20 z-0"></div>
 
-      <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12">
-        <div ref={textRef} className="w-full text-white space-y-6">
+      <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12 py-32">
+        <div ref={textRef} className="w-full text-white flex flex-col gap-2 md:gap-4">
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -84,7 +84,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl text-left mt-2"
+            className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl text-left"
           >
             We source compliant, cashflow-focused Rent-to-Rent, Airbnb, and Council Sourcing opportunities across the UK for premium property investors.
           </motion.p>
@@ -93,14 +93,20 @@ export function Hero() {
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4 pt-2"
+            className="flex flex-wrap items-center gap-4 mt-1 md:mt-2"
           >
-            <a href="#contact" className="px-8 py-4 bg-gold hover:bg-gold/90 text-white rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)] hover:-translate-y-1">
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="px-8 py-4 bg-gold hover:bg-gold/90 text-white rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)] hover:-translate-y-1 cursor-pointer"
+            >
               Join Investor List
-            </a>
-            <a href="#contact" className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-sm transition-all hover:-translate-y-1">
+            </button>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-sm transition-all hover:-translate-y-1 cursor-pointer"
+            >
               Book Discovery Call
-            </a>
+            </button>
           </motion.div>
         </div>
       </div>

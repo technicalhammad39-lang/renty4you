@@ -80,7 +80,7 @@ export function CoreStrategies() {
   }, []);
 
   return (
-    <section id="strategies" ref={sectionRef} className="py-24 bg-surface relative z-10">
+    <section id="strategies" ref={sectionRef} className="pt-8 pb-24 bg-surface relative z-10">
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="max-w-3xl mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">

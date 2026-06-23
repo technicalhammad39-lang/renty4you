@@ -156,7 +156,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setStrategyOpen(false);
             setCashflowOpen(false);
           }}
-          className="flex items-center gap-4 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
         >
           <div className="text-gold">
             <MapPin size={22} weight="duotone" />
@@ -164,7 +164,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
 
           <div className="flex-1 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-gold block leading-none">Where</span>
-            <span className="text-sm font-bold text-slate-900 mt-1 block truncate">
+            <span className={`text-sm font-bold mt-1 block truncate ${searchLoc === "all" ? "text-slate-400 font-semibold" : "text-slate-900"}`}>
               {locLabels[searchLoc]}
             </span>
           </div>
@@ -212,14 +212,14 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setCashflowOpen(false);
           }}
-          className="flex items-center gap-4 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
         >
           <div className="text-gold">
             <HouseLine size={22} weight="duotone" />
           </div>
           <div className="flex-1 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-gold block leading-none">Strategy</span>
-            <span className="text-sm font-bold text-slate-900 mt-1 block truncate">
+            <span className={`text-sm font-bold mt-1 block truncate ${searchStrategy === "all" ? "text-slate-400 font-semibold" : "text-slate-900"}`}>
               {stratLabels[searchStrategy]}
             </span>
           </div>
@@ -272,14 +272,14 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setStrategyOpen(false);
           }}
-          className="flex items-center gap-4 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
         >
           <div className="text-gold">
             <CurrencyGbp size={22} weight="duotone" />
           </div>
           <div className="flex-1 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-gold block leading-none">Net Cashflow</span>
-            <span className="text-sm font-bold text-slate-900 mt-1 block truncate">
+            <span className={`text-sm font-bold mt-1 block truncate ${searchCashflow === "0" ? "text-slate-400 font-semibold" : "text-slate-900"}`}>
               {cashflowLabels[searchCashflow]}
             </span>
           </div>

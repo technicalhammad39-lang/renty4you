@@ -80,13 +80,13 @@ export function WhyPartner() {
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          <div ref={imageRef} className="relative h-[600px] w-full rounded-[40px] overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-gold/10 mix-blend-overlay z-10" />
+          <div ref={imageRef} className="relative w-full flex justify-center items-center">
             <Image
-              src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2670&auto=format&fit=crop" 
-              alt="Investor working"
-              fill
-              className="object-cover"
+              src="/why-us-side.png" 
+              alt="Why Partner with Us"
+              width={600}
+              height={600}
+              className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-xl"
               unoptimized
             />
           </div>
