@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { SearchBar } from "@/components/search-bar";
 import { SearchScrollWrapper } from "@/components/search-scroll-wrapper";
+import { FeaturedListings } from "@/components/opportunities/featured-listings";
 import { ComplianceStrip } from "@/components/compliance-strip";
 import { CoreStrategies } from "@/components/core-strategies";
 import { WhyPartner } from "@/components/why-partner";
@@ -25,6 +26,9 @@ export default function Home() {
             <SearchBar variant="full" />
           </SearchScrollWrapper>
         </div>
+        
+        <FeaturedListings />
+        
         <CoreStrategies />
         <WhyPartner />
         <ComplianceStrip />

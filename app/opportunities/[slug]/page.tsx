@@ -73,8 +73,8 @@ export default async function OpportunityDetailPage({ params }: Props) {
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
               {opportunity.strategy}
             </span>
             <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold flex items-center gap-1">
@@ -147,10 +147,10 @@ export default async function OpportunityDetailPage({ params }: Props) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Financials Card */}
-                <div className="dash-block p-1.5 rounded-[2rem] bg-gradient-to-b from-gold/40 via-gold/10 to-transparent shadow-xl flex flex-col">
+                <div className="dash-block p-1.5 rounded-[2rem] bg-gradient-to-b from-primary/40 via-accent/10 to-transparent shadow-xl flex flex-col">
                   <div className="h-full w-full rounded-[1.8rem] bg-white dark:bg-slate-900 p-8 flex flex-col relative overflow-hidden">
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gold/5 to-transparent pointer-events-none"></div>
-                    <div className="flex items-center gap-3 text-gold mb-10 relative z-10">
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
+                    <div className="flex items-center gap-3 text-primary mb-10 relative z-10">
                       <CurrencyGbp size={28} weight="duotone" /> 
                       <span className="font-bold tracking-tight text-xl">Investment Returns</span>
                     </div>
@@ -161,12 +161,12 @@ export default async function OpportunityDetailPage({ params }: Props) {
                       </div>
                       <div className="flex justify-between items-end border-b border-slate-100 dark:border-slate-800 pb-4">
                         <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">Est. Rent Range</span>
-                        <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">{opportunity.rentRange}</span>
+                        <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">£{opportunity.rentRange.replace(/£/g, '')}</span>
                       </div>
                       <div className="pt-6 pb-2 mt-auto">
-                        <span className="text-xs font-bold uppercase tracking-widest text-gold block mb-2">Net Cashflow</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-primary block mb-2">Net Cashflow</span>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-4xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">{opportunity.estimatedCashflow}</span>
+                          <span className="text-4xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white">£{opportunity.estimatedCashflow.replace(/£/g, '')}</span>
                           <span className="text-xl font-bold text-slate-400">/mo</span>
                         </div>
                       </div>
@@ -187,7 +187,7 @@ export default async function OpportunityDetailPage({ params }: Props) {
                    {/* Simplified Donut Chart Representation */}
                    <div className="relative w-40 h-40 flex-shrink-0 drop-shadow-sm mt-4">
                      <svg className="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 42 42">
-                       <circle cx="21" cy="21" r="15.9155" className="text-gold hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer" strokeWidth="8" strokeDasharray={`${parseInt(opportunity.occupancyRequired)} 100`} strokeDashoffset="0" stroke="currentColor" fill="none" />
+                       <circle cx="21" cy="21" r="15.9155" className="text-primary hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer" strokeWidth="8" strokeDasharray={`${parseInt(opportunity.occupancyRequired)} 100`} strokeDashoffset="0" stroke="currentColor" fill="none" />
                        <circle cx="21" cy="21" r="15.9155" className="text-slate-200 dark:text-slate-700 hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer" strokeWidth="8" strokeDasharray={`${100 - parseInt(opportunity.occupancyRequired)} 100`} strokeDashoffset={`-${parseInt(opportunity.occupancyRequired)}`} stroke="currentColor" fill="none" />
                      </svg>
                      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
@@ -239,6 +239,87 @@ export default async function OpportunityDetailPage({ params }: Props) {
                 </div>
               </div>
             </section>
+
+            {/* Extended Deal Analysis (New Sections) */}
+            <section className="space-y-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+              <h2 className="text-2xl font-bold dark:text-white">Comprehensive Deal Analysis</h2>
+              
+              <div className="space-y-6">
+                {/* Location & Demand */}
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-inner overflow-hidden">
+                  <div className="flex flex-col md:flex-row gap-8 items-center">
+                    <div className="flex-1 space-y-4">
+                      <h3 className="font-bold text-xl mb-3 flex items-center gap-2 dark:text-white">
+                        <MapPin size={24} weight="fill" className="text-primary drop-shadow-sm" /> Area Demand & Demographics
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                        This property is located in a high-demand zone for {opportunity.strategy}. The local demographics show strong growth across key target profiles. Proximity to major employment hubs guarantees a steady stream of tenants.
+                      </p>
+                    </div>
+                    
+                    {/* Animated Custom SVG Chart */}
+                    <div className="w-full md:w-64 shrink-0 flex flex-col gap-3 relative z-10">
+                      {opportunity.demand ? (
+                        <>
+                          {[
+                            { label: 'Corporate', value: opportunity.demand.corporate, color: 'bg-blue-500' },
+                            { label: 'Tourists', value: opportunity.demand.tourists, color: 'bg-emerald-500' },
+                            { label: 'Families', value: opportunity.demand.families, color: 'bg-primary' },
+                            { label: 'Students', value: opportunity.demand.students, color: 'bg-purple-500' }
+                          ].map((item, idx) => (
+                            item.value > 0 && (
+                              <div key={idx} className="w-full group cursor-default">
+                                <div className="flex justify-between text-xs font-bold mb-1.5 text-slate-700 dark:text-slate-300">
+                                  <span>{item.label}</span>
+                                  <span className="transition-transform group-hover:scale-110 group-hover:text-primary">{item.value}%</span>
+                                </div>
+                                <div className="h-2.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner relative">
+                                  {/* Base colored bar */}
+                                  <div 
+                                    className={`h-full rounded-full ${item.color} shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] w-0`}
+                                    style={{ width: `${item.value}%`, transitionDelay: `${idx * 150}ms` }}
+                                  ></div>
+                                  {/* Glow effect on hover */}
+                                  <div className="absolute top-0 left-0 h-full w-full bg-white/30 opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 ease-in-out transform -translate-x-full"></div>
+                                </div>
+                              </div>
+                            )
+                          ))}
+                        </>
+                      ) : (
+                        <div className="text-center p-4 bg-slate-100 dark:bg-slate-800 rounded-xl text-sm text-slate-500 dark:text-slate-400">
+                          Detailed demand analytics pending.
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Strategy Specific Notes */}
+                <div className="bg-gradient-to-br from-slate-50 to-white dark:from-slate-900/80 dark:to-slate-900 p-6 md:p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+                  <h3 className="font-bold text-xl mb-4 flex items-center gap-2 dark:text-white relative z-10">
+                    <ShieldCheck size={24} weight="fill" className="text-blue-500" /> Strategy: {opportunity.strategy}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed relative z-10">
+                    {opportunity.strategy === "Council Leasing" ? "This strategy offers a hands-off, guaranteed rent approach. The local council signs a multi-year lease, covering all voids and minor maintenance. You receive income on day 1." : opportunity.strategy === "Serviced Accommodation" ? "Optimized for short-term lets. Highest yields are achieved through dynamic pricing across Airbnb and Booking.com, targeting both weekend tourists and mid-week corporate contractors." : "Rent-to-Rent strategy focuses on maximizing cashflow without the need to purchase the asset. We secure the property on a corporate let and sublet to targeted tenant profiles."}
+                  </p>
+                </div>
+
+                {/* Due Diligence */}
+                <div className="bg-gradient-to-br from-emerald-50/50 to-white dark:from-emerald-900/10 dark:to-slate-900/50 p-6 md:p-8 rounded-[2rem] border border-emerald-100/50 dark:border-emerald-900/30 shadow-sm">
+                  <h3 className="font-bold text-xl mb-5 flex items-center gap-2 dark:text-white">
+                    <CheckCircle size={24} weight="fill" className="text-emerald-500" /> Due Diligence Completed
+                  </h3>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">
+                    <li className="flex items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-50 dark:border-slate-700/50"><CheckCircle size={20} weight="fill" className="text-emerald-500" /> Title Deed Verification</li>
+                    <li className="flex items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-50 dark:border-slate-700/50"><CheckCircle size={20} weight="fill" className="text-emerald-500" /> Local Market Rent Appraisal</li>
+                    <li className="flex items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-50 dark:border-slate-700/50"><CheckCircle size={20} weight="fill" className="text-emerald-500" /> Competitor Nightly Rate Analysis</li>
+                    <li className="flex items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-50 dark:border-slate-700/50"><CheckCircle size={20} weight="fill" className="text-emerald-500" /> Block Management Lease Check</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
 
           {/* Right Column (Sticky CTA Sidebar) */}
@@ -250,7 +331,7 @@ export default async function OpportunityDetailPage({ params }: Props) {
               </p>
               
               <div className="space-y-4">
-                <button className="w-full py-4 rounded-xl font-bold bg-slate-900 text-white hover:bg-gold dark:bg-white dark:text-slate-900 dark:hover:bg-gold dark:hover:text-white transition-colors shadow-lg">
+                <button className="w-full py-4 rounded-xl font-bold bg-slate-900 text-white hover:bg-primary dark:bg-white dark:text-slate-900 dark:hover:bg-primary dark:hover:text-white transition-colors shadow-lg">
                   Unlock Full Deal Pack
                 </button>
                 <button className="w-full py-4 rounded-xl font-bold border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:border-slate-900 dark:hover:border-white transition-colors">

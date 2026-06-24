@@ -97,7 +97,7 @@ export function ProcessWorkflow() {
 
         <div className="relative max-w-4xl mx-auto" ref={stepsRef}>
           <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-1 bg-border-subtle rounded-full -translate-x-1/2">
-            <div ref={lineRef} className="absolute top-0 left-0 w-full bg-gold h-full origin-top" />
+            <div ref={lineRef} className="absolute top-0 left-0 w-full bg-primary h-full origin-top" />
           </div>
 
           <div className="space-y-12">
@@ -106,13 +106,13 @@ export function ProcessWorkflow() {
               return (
                 <div key={index} className={`workflow-step relative flex items-center md:justify-between ${isEven ? "md:flex-row-reverse" : ""}`}>
                   
-                  <div className="absolute left-[28px] md:left-1/2 w-14 h-14 bg-background border-4 border-gold rounded-full flex items-center justify-center font-bold text-lg -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(212,160,23,0.5)]">
+                  <div className="absolute left-[28px] md:left-1/2 w-14 h-14 bg-background border-4 border-primary rounded-full flex items-center justify-center font-bold text-lg -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(212,160,23,0.5)]">
                     {index + 1}
                   </div>
 
                   <div className={`ml-20 md:ml-0 md:w-[45%] ${isEven ? "md:pl-10" : "md:pr-10"}`}>
-                    <div className="p-8 bg-background border border-border-subtle rounded-3xl shadow-sm hover:shadow-lg hover:border-gold/50 transition-all duration-300 relative group">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="p-8 bg-background border border-border-subtle rounded-3xl shadow-sm hover:shadow-lg hover:border-primary/50 transition-all duration-300 relative group">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                       <h3 className="text-xl font-bold mb-3">{step.title}</h3>
                       <p className="text-muted-text leading-relaxed">
                         {step.desc}

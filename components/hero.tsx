@@ -66,8 +66,8 @@ export function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-0"></div>
-      <div className="absolute inset-0 bg-black/20 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/80 via-[#030712]/50 to-transparent z-0"></div>
+      <div className="absolute inset-0 bg-[rgba(3,7,18,0.65)] z-0"></div>
 
       <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12 py-32">
         <div ref={textRef} className="w-full text-white flex flex-col gap-2 md:gap-4">
@@ -97,7 +97,7 @@ export function Hero() {
           >
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-              className="px-8 py-4 bg-gold hover:bg-gold/90 text-white rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)] hover:-translate-y-1 cursor-pointer"
+              className="px-8 py-4 brand-gradient text-white rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-1 cursor-pointer"
             >
               Join Investor List
             </button>

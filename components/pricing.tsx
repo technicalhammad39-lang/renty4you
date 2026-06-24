@@ -57,15 +57,15 @@ export function Pricing() {
             <p className="text-muted-text">Payable on successful completion.</p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-surface border-2 border-gold shadow-[0_0_40px_rgba(212,160,23,0.15)] flex flex-col items-center text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-3 bg-gold text-white text-xs font-bold uppercase tracking-wider rounded-bl-2xl">
+          <div className="p-8 rounded-3xl bg-surface border-2 border-primary shadow-[0_0_40px_rgba(212,160,23,0.15)] flex flex-col items-center text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-3 bg-primary text-white text-xs font-bold uppercase tracking-wider rounded-bl-2xl">
               Payable In Two Stages
             </div>
             <h3 className="text-xl font-semibold mb-2 mt-4">Total Sourcing Fee</h3>
-            <div className="text-5xl border-b border-gold/30 pb-6 font-bold mb-6 text-gold font-mono tracking-tighter w-full">£3,500</div>
+            <div className="text-5xl border-b border-primary/30 pb-6 font-bold mb-6 text-primary font-mono tracking-tighter w-full">£3,500</div>
             <ul className="text-left w-full space-y-3">
-              <li className="flex items-center gap-2"><CheckCircle weight="fill" className="text-gold" /> £500 reservation</li>
-              <li className="flex items-center gap-2"><CheckCircle weight="fill" className="text-gold" /> £3,000 completion</li>
+              <li className="flex items-center gap-2"><CheckCircle weight="fill" className="text-primary" /> £500 reservation</li>
+              <li className="flex items-center gap-2"><CheckCircle weight="fill" className="text-primary" /> £3,000 completion</li>
             </ul>
           </div>
 

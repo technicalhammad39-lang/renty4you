@@ -66,28 +66,20 @@ export function Navbar() {
   };
 
   const navLinks: NavLink[] = [
-    { name: "Home", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Opportunities", href: "/opportunities" },
     {
       name: "Strategies",
-      href: "#strategies",
+      href: "/opportunities",
       children: [
-        { name: "Serviced Accommodation", href: "#strategies" },
-        { name: "Council Leasing", href: "#strategies" },
-        { name: "Rent-to-Rent", href: "#strategies" },
+        { name: "Serviced Accommodation", href: "/opportunities?strategy=Serviced+Accommodation" },
+        { name: "Council Leasing", href: "/opportunities?strategy=Council+Leasing" },
+        { name: "Rent-to-Rent", href: "/opportunities?strategy=Rent-to-Rent" },
       ],
     },
-    {
-      name: "Deal Packs",
-      href: "#deal-packs",
-      children: [
-        { name: "Inside Deal Packs", href: "#deal-packs" },
-        { name: "Sample Deal Pack", href: "#deal-packs" },
-      ],
-    },
-    { name: "Process", href: "#process" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#contact" },
+    { name: "Process", href: "/#process" },
+    { name: "FAQ", href: "/#faq" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -132,11 +124,11 @@ export function Navbar() {
                         if (link.name === "Strategies") setStrategiesOpen(!strategiesOpen);
                         if (link.name === "Deal Packs") setDealPacksOpen(!dealPacksOpen);
                       }}
-                      className="flex items-center gap-1 text-xs lg:text-sm font-medium text-slate-900/80 hover:text-gold transition-colors cursor-pointer"
+                      className="flex items-center gap-1 text-xs lg:text-sm font-medium text-slate-900/80 hover:text-primary transition-colors cursor-pointer"
                     >
                       <span>{link.name}</span>
                       <svg
-                        className={`h-3 w-3 transition-transform duration-300 ${isOpen ? "rotate-180 text-gold" : ""}`}
+                        className={`h-3 w-3 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -158,7 +150,7 @@ export function Navbar() {
                             <Link
                               key={child.name}
                               href={child.href}
-                              className="block px-4 py-2.5 text-xs lg:text-sm font-medium text-slate-900/80 hover:bg-gold/10 hover:text-gold rounded-xl transition-all"
+                              className="block px-4 py-2.5 text-xs lg:text-sm font-medium text-slate-900/80 hover:bg-primary/10 hover:text-primary rounded-xl transition-all"
                             >
                               {child.name}
                             </Link>
@@ -174,10 +166,10 @@ export function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-xs lg:text-sm font-medium text-slate-900/80 hover:text-gold transition-colors relative group py-1"
+                    className="text-xs lg:text-sm font-medium text-slate-900/80 hover:text-primary transition-colors relative group py-1"
                   >
                     {link.name}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </li>
               );
@@ -189,7 +181,7 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-9 h-9 rounded-full bg-white hover:bg-gold/10 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-gold transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-white hover:bg-primary/10 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer"
                 aria-label="Toggle Theme"
               >
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -197,7 +189,7 @@ export function Navbar() {
             )}
             <Link
               href="#contact"
-              className="px-5 py-2.5 rounded-full bg-gold text-white font-bold text-xs lg:text-sm shadow-md hover:bg-gold/90 transition-all hover:shadow-[0_0_15px_rgba(212,160,23,0.4)] hover:-translate-y-0.5 active:scale-95"
+              className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-xs lg:text-sm shadow-md transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 active:scale-95"
             >
               Join Investor List
             </Link>
@@ -209,7 +201,7 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-gold transition-colors"
+              className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-primary transition-colors"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -217,7 +209,7 @@ export function Navbar() {
           )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-900 hover:text-gold focus:outline-none transition-colors"
+            className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-900 hover:text-primary focus:outline-none transition-colors"
           >
             {mobileMenuOpen ? <X size={20} /> : <List size={20} />}
           </button>
@@ -239,11 +231,11 @@ export function Navbar() {
                   <div key={link.name} className="flex flex-col border-b border-border-subtle/50 py-1">
                     <button
                       onClick={toggleAccordion}
-                      className="flex items-center justify-between text-base font-bold text-slate-900 py-2 hover:text-gold transition-colors w-full text-left"
+                      className="flex items-center justify-between text-base font-bold text-slate-900 py-2 hover:text-primary transition-colors w-full text-left"
                     >
                       <span>{link.name}</span>
                       <svg
-                        className={`h-4 w-4 transition-transform duration-300 ${isAccordionOpen ? "rotate-180 text-gold" : ""}`}
+                        className={`h-4 w-4 transition-transform duration-300 ${isAccordionOpen ? "rotate-180 text-primary" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -264,7 +256,7 @@ export function Navbar() {
                             <Link
                               key={child.name}
                               href={child.href}
-                              className="text-sm font-medium text-slate-900/80 py-1.5 hover:text-gold transition-colors"
+                              className="text-sm font-medium text-slate-900/80 py-1.5 hover:text-primary transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {child.name}
@@ -281,7 +273,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-base font-semibold text-slate-900 py-2 border-b border-border-subtle/50 hover:text-gold transition-colors"
+                  className="text-base font-semibold text-slate-900 py-2 border-b border-border-subtle/50 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -290,7 +282,7 @@ export function Navbar() {
             })}
             <Link
               href="#contact"
-              className="mt-2 w-full text-center py-3 rounded-2xl bg-gold text-white font-bold shadow-md hover:bg-gold/90 transition-colors"
+              className="mt-2 w-full text-center py-3 rounded-2xl bg-primary hover:bg-primary-hover text-white font-bold shadow-md transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Join Investor List

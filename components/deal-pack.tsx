@@ -82,8 +82,8 @@ export function DealPackDashboard() {
           <div className="p-6 md:p-10 lg:p-12">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 dash-block">
               <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center border border-gold/20 shadow-inner">
-                  <FileText className="text-gold" size={32} weight="duotone" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 flex items-center justify-center border border-primary/20 shadow-inner">
+                  <FileText className="text-primary" size={32} weight="duotone" />
                 </div>
                 <div>
                   <h3 className="font-bold text-2xl md:text-3xl tracking-tight text-slate-900 dark:text-white mb-2">Investment Report</h3>
@@ -92,7 +92,7 @@ export function DealPackDashboard() {
                   </p>
                 </div>
               </div>
-              <button className="px-8 py-3.5 bg-gold hover:bg-gold/90 text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)]">
+              <button className="px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)]">
                 Review Opportunity
               </button>
             </div>
@@ -102,7 +102,7 @@ export function DealPackDashboard() {
               {/* Row 1, Col 1 - Property */}
               <div className="col-span-1 md:col-span-4 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col gap-6 relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                  <HouseLine size={24} weight="duotone" className="text-gold" /> 
+                  <HouseLine size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Property & Area</span>
                 </div>
                 {/* Mockup Image Placeholder */}
@@ -126,12 +126,12 @@ export function DealPackDashboard() {
               </div>
 
               {/* Row 1, Col 2 - Financials */}
-              <div className="col-span-1 md:col-span-4 dash-block p-1.5 rounded-[2rem] bg-gradient-to-b from-gold/40 via-gold/10 to-transparent shadow-xl relative z-10 flex flex-col">
+              <div className="col-span-1 md:col-span-4 dash-block p-1.5 rounded-[2rem] bg-gradient-to-b from-primary/40 via-accent/10 to-transparent shadow-xl relative z-10 flex flex-col">
                 <div className="h-full w-full rounded-[1.8rem] bg-white dark:bg-slate-900 p-8 flex flex-col relative overflow-hidden">
                   {/* Sparkline background effect */}
-                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gold/5 to-transparent pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
                   
-                  <div className="flex items-center gap-3 text-gold mb-10 relative z-10">
+                  <div className="flex items-center gap-3 text-primary mb-10 relative z-10">
                     <CurrencyGbp size={28} weight="duotone" /> 
                     <span className="font-bold tracking-tight text-xl">Financials</span>
                   </div>
@@ -147,7 +147,7 @@ export function DealPackDashboard() {
                     </div>
                     
                     <div className="pt-6 pb-2 mt-auto">
-                      <span className="text-xs font-bold uppercase tracking-widest text-gold block mb-2">Net Cashflow</span>
+                      <span className="text-xs font-bold uppercase tracking-widest text-primary block mb-2">Net Cashflow</span>
                       <div className="flex items-baseline gap-1">
                         <span className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white">£1,050</span>
                         <span className="text-xl font-bold text-slate-400">/mo</span>
@@ -160,7 +160,7 @@ export function DealPackDashboard() {
               {/* Row 1 & 2, Col 3 - Risks */}
               <div className="col-span-1 md:col-span-4 md:row-span-2 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 mb-6">
-                  <ChartBar size={24} weight="duotone" className="text-gold" /> 
+                  <ChartBar size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Risks & Assumptions</span>
                 </div>
                 <p className="text-base leading-relaxed text-slate-500 dark:text-slate-400 mb-8">
@@ -201,14 +201,14 @@ export function DealPackDashboard() {
               {/* Row 2, Col 1 - Compliance */}
               <div className="col-span-1 md:col-span-4 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 mb-6 flex-shrink-0">
-                  <ShieldCheck size={24} weight="duotone" className="text-gold" /> 
+                  <ShieldCheck size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Compliance Notes</span>
                 </div>
                 <ul className="space-y-5 flex-grow">
                   {["Licensing checks passed", "Planning permission reviewed", "Lease terms verified"].map((item, i) => (
                     <li key={i} className="flex items-start gap-4 text-sm font-medium text-slate-600 dark:text-slate-400">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center mt-0.5">
-                        <div className="w-2 h-2 rounded-full bg-gold"></div>
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+                        <div className="w-2 h-2 rounded-full bg-primary"></div>
                       </div>
                       {item}
                     </li>
@@ -229,7 +229,7 @@ export function DealPackDashboard() {
                        cx="21"
                        cy="21"
                        r="15.9155"
-                       className="text-gold hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer"
+                       className="text-primary hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer"
                        strokeWidth="8"
                        strokeDasharray="65 100"
                        strokeDashoffset="0"

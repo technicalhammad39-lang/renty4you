@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Opportunity } from "@/lib/firebase/firestore";
+import { Opportunity, subscribeToOpportunities } from "@/lib/firebase/firestore";
 import { ListingCard } from "@/components/opportunities/listing-card";
 import { Funnel, MapPinLine, HouseLine, ChartLineUp } from "@phosphor-icons/react";
 
@@ -11,12 +11,21 @@ interface OpportunitiesClientProps {
 }
 
 function OpportunitiesFilter({
-  opportunities,
+  opportunities: initialOpportunities,
 }: {
   opportunities: Opportunity[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [opportunities, setOpportunities] = useState<Opportunity[]>(initialOpportunities);
+
+  useEffect(() => {
+    // Listen for real-time updates from Firestore
+    const unsubscribe = subscribeToOpportunities((liveData) => {
+      setOpportunities(liveData);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Extract unique locations and strategies
   const locations = Array.from(new Set(opportunities.map((o) => o.location)));
@@ -72,7 +81,7 @@ function OpportunitiesFilter({
                   onClick={() => updateFilters("strategy", strategy)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${
                     currentStrategy === strategy
-                      ? "bg-gold text-white shadow-md shadow-gold/20"
+                      ? "bg-primary text-white shadow-md shadow-primary/20"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                   }`}
                 >
@@ -93,7 +102,7 @@ function OpportunitiesFilter({
                 <select
                   value={currentLocation}
                   onChange={(e) => updateFilters("location", e.target.value)}
-                  className="block w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-gold dark:bg-slate-800 dark:text-white cursor-pointer appearance-none"
+                  className="block w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-primary dark:bg-slate-800 dark:text-white cursor-pointer appearance-none"
                 >
                   <option value="All">All Locations</option>
                   {locations.map((loc) => (
@@ -124,7 +133,7 @@ function OpportunitiesFilter({
             </p>
             <button 
               onClick={() => router.push("/opportunities")}
-              className="mt-6 px-6 py-3 bg-gold text-white font-bold rounded-xl hover:bg-gold/90 transition-colors"
+              className="mt-6 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors"
             >
               Clear All Filters
             </button>
@@ -139,7 +148,7 @@ export default function OpportunitiesClient({ initialOpportunities }: Opportunit
   return (
     <Suspense fallback={
       <div className="container mx-auto px-4 text-center py-20">
-        <div className="w-10 h-10 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
       </div>
     }>
       <OpportunitiesFilter opportunities={initialOpportunities} />

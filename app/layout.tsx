@@ -20,13 +20,14 @@ export const metadata: Metadata = {
 };
 
 import { SearchProvider } from '@/components/search-context';
-
+import { PresenceTracker } from '@/components/presence-tracker';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={pjs.variable} suppressHydrationWarning>
       <body className="font-sans antialiased text-foreground bg-background" suppressHydrationWarning>
         <Providers>
           <SearchProvider>
+            <PresenceTracker />
             {children}
           </SearchProvider>
         </Providers>

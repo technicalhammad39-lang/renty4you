@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Admin access check function
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    match /listings/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /blogs/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /contactSubmissions/{document} {
+      allow create: if true; // Public can submit contact forms
+      allow read, update, delete: if isAdmin();
+    }
+    
+    match /newsletterSubscribers/{document} {
+      allow create: if true; // Public can subscribe
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Protect all other collections (settings, admins, users)
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

@@ -94,7 +94,7 @@ export function ComplianceStrip() {
 
         <div ref={cardsRef} className="w-full mt-10">
           {/* Visible Image for Users */}
-          <div className="w-full relative rounded-3xl overflow-hidden shadow-2xl border border-border-subtle bg-white">
+          <div className="w-full relative flex justify-center">
             <Image 
               src="/register.png" 
               alt="Rent4uSolutions Compliance Registrations including PRS and ICO" 

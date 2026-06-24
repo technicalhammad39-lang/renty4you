@@ -104,8 +104,8 @@ export function WhyPartner() {
             <ul ref={listRef} className="space-y-4">
               {CHECKLIST.map((item, i) => (
                 <li key={i} className="flex items-center gap-4 group">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                    <CheckCircle weight="fill" className="text-gold text-xl group-hover:scale-110 transition-transform" />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <CheckCircle weight="fill" className="text-primary text-xl group-hover:scale-110 transition-transform" />
                   </div>
                   <span className="text-lg font-medium text-foreground">{item}</span>
                 </li>
@@ -113,7 +113,7 @@ export function WhyPartner() {
             </ul>
 
             <div className="pt-8 flex">
-              <a href="#process" className="text-gold font-semibold uppercase tracking-widest text-sm py-4 border-b-2 border-gold/30 hover:border-gold transition-colors">
+              <a href="#process" className="text-primary font-semibold uppercase tracking-widest text-sm py-4 border-b-2 border-primary/30 hover:border-primary transition-colors">
                 Discover Our Process
               </a>
             </div>

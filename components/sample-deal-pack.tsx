@@ -13,13 +13,13 @@ export function SampleDealPack() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div className="relative w-full h-[600px] flex items-center justify-center">
-            <div className="absolute inset-0 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute inset-0 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
             
             <div className="relative w-[80%] h-[90%] bg-background rounded-l-2xl border border-border-subtle shadow-2xl p-6 flex flex-col transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 overflow-hidden">
               <div className="w-full flex justify-between items-center mb-6">
                 <div className="font-bold text-lg">Opportunity Report</div>
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
-                  <FileText className="text-gold" />
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <FileText className="text-primary" />
                 </div>
               </div>
               <div className="h-40 w-full mb-6 relative rounded-xl overflow-hidden">
@@ -34,7 +34,7 @@ export function SampleDealPack() {
                  </div>
                  <div className="rounded-lg bg-surface border border-border-subtle p-3 flex flex-col justify-end">
                     <div className="text-xs text-muted-text">Net ROI</div>
-                    <div className="font-bold text-gold">High</div>
+                    <div className="font-bold text-primary">High</div>
                  </div>
               </div>
             </div>
@@ -59,8 +59,8 @@ export function SampleDealPack() {
             </p>
 
             {submitted ? (
-              <div className="bg-gold/10 border border-gold/30 p-6 rounded-2xl flex flex-col items-center text-center">
-                <CheckCircle className="text-gold text-5xl mb-4" weight="fill" />
+              <div className="bg-primary/10 border border-primary/30 p-6 rounded-2xl flex flex-col items-center text-center">
+                <CheckCircle className="text-primary text-5xl mb-4" weight="fill" />
                 <h3 className="text-xl font-bold mb-2">Check Your Email</h3>
                 <p className="text-muted-text">We've just sent the sample deal pack to your inbox.</p>
               </div>
@@ -71,19 +71,19 @@ export function SampleDealPack() {
               >
                 <div>
                   <label htmlFor="name" className="sr-only">Full Name</label>
-                  <input id="name" required type="text" placeholder="Full Name" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                  <input id="name" required type="text" placeholder="Full Name" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
                 <div>
                   <label htmlFor="email" className="sr-only">Email</label>
-                  <input id="email" required type="email" placeholder="Email Address" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                  <input id="email" required type="email" placeholder="Email Address" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
                 <div>
                   <label htmlFor="phone" className="sr-only">Phone</label>
-                  <input id="phone" type="tel" placeholder="Phone Number (Optional)" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors" />
+                  <input id="phone" type="tel" placeholder="Phone Number (Optional)" className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
                 <div>
                   <label htmlFor="strategy" className="sr-only">Investment Strategy</label>
-                  <select defaultValue="" id="strategy" required className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors appearance-none text-foreground">
+                  <select defaultValue="" id="strategy" required className="w-full bg-surface border border-border-subtle rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none text-foreground">
                     <option value="" disabled>Investment Strategy</option>
                     <option value="sa">Serviced Accommodation</option>
                     <option value="council">Council Leasing</option>
@@ -91,7 +91,7 @@ export function SampleDealPack() {
                     <option value="unsure">Not Sure Yet</option>
                   </select>
                 </div>
-                <button type="submit" className="w-full py-4 bg-gold hover:bg-gold/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-lg">
+                <button type="submit" className="w-full py-4 bg-primary hover:bg-primary-hover text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-lg">
                   <DownloadSimple size={20} weight="bold" /> Get Sample Deal Pack
                 </button>
                 <p className="text-xs text-muted-text text-center mt-4">

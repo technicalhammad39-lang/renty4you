@@ -108,11 +108,11 @@ export function CoreStrategies() {
                 />
               </div>
 
-              {/* Blue Box */}
-              <div className="absolute bottom-0 right-0 w-[90%] md:w-[94%] bg-gradient-to-br from-[#08025D] via-[#08025D] to-[#1c0bb8] text-white rounded-tl-[32px] rounded-bl-[32px] rounded-br-[32px] p-6 lg:p-8 z-10 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border-t-[8px] border-l-[8px] border-surface">
+              {/* Green Box */}
+              <div className="absolute bottom-0 right-0 w-[90%] md:w-[94%] bg-gradient-to-br from-primary to-accent text-white rounded-tl-[32px] rounded-bl-[32px] rounded-br-[32px] p-6 lg:p-8 z-10 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border-t-[8px] border-l-[8px] border-surface">
                 
                 {/* Circular Icon */}
-                <div className="absolute -top-6 -right-4 md:-right-6 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full border border-gray-200 shadow-md flex items-center justify-center text-[#08025D] z-20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                <div className="absolute -top-6 -right-4 md:-right-6 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full border border-gray-200 shadow-md flex items-center justify-center text-primary z-20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
                   <strategy.icon size={24} weight="fill" className="md:w-[26px] md:h-[26px]" />
                 </div>
                 

@@ -79,7 +79,7 @@ export default async function BlogDetailPage({ params }: Props) {
       <article className="container mx-auto px-4 max-w-4xl">
         
         {/* Back Link */}
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-gold transition-colors mb-10">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors mb-10">
           <ArrowLeft size={16} weight="bold" />
           Back to Insights
         </Link>
@@ -87,7 +87,7 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Article Header */}
         <header className="mb-12">
           <div className="mb-6 flex flex-wrap items-center gap-4">
-            <span className="px-3 py-1.5 bg-gold/10 text-gold rounded-full text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-wider">
               {blog.category}
             </span>
           </div>
@@ -129,14 +129,14 @@ export default async function BlogDetailPage({ params }: Props) {
         <div 
           className="prose prose-lg md:prose-xl prose-slate dark:prose-invert max-w-none mb-20
             prose-headings:font-black prose-headings:tracking-tight
-            prose-a:text-gold hover:prose-a:text-gold/80 prose-a:font-bold prose-a:no-underline
+            prose-a:text-primary hover:prose-a:text-primary/80 prose-a:font-bold prose-a:no-underline
             prose-img:rounded-2xl prose-img:shadow-xl"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
 
         {/* Footer actions */}
         <div className="flex justify-between items-center py-8 border-t border-slate-100 dark:border-slate-800">
-          <button className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white hover:text-gold dark:hover:text-gold transition-colors px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-gold dark:hover:border-gold">
+          <button className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary">
             <ShareNetwork size={18} weight="bold" />
             Share Article
           </button>
@@ -154,7 +154,7 @@ export default async function BlogDetailPage({ params }: Props) {
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl mb-4 bg-slate-100 dark:bg-slate-800">
                     <Image src={related.image} alt={related.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-gold transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">
                     {related.title}
                   </h3>
                   <p className="text-sm font-medium text-slate-500">

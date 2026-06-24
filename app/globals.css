@@ -4,30 +4,46 @@
 @theme {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-muted-text: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
   --color-gold: var(--gold);
   --color-border-subtle: var(--border-color);
 }
 
 @layer base {
   :root {
-    --background: #F8FAFC;
+    --background: #FAFAF9;
     --surface: #FFFFFF;
+    --card: #FFFFFF;
     --foreground: #0F172A;
-    --muted: #475569;
+    --muted: #64748B;
+    --primary: #15803D;
+    --primary-hover: #166534;
+    --accent: #22C55E;
     --gold: #D4A017;
-    --border-color: #E2E8F0;
+    --border-color: #E5E7EB;
   }
 
   .dark {
-    --background: #05070D;
-    --surface: #0B1220;
-    --foreground: #FFFFFF;
-    --muted: #CBD5E1;
+    --background: #0B1220;
+    --surface: #111827;
+    --card: #1E293B;
+    --foreground: #F8FAFC;
+    --muted: #94A3B8;
+    --primary: #22C55E;
+    --primary-hover: #4ADE80;
+    --accent: #4ADE80;
     --gold: #D4A017;
-    --border-color: rgba(255, 255, 255, 0.12);
+    --border-color: rgba(255, 255, 255, 0.08);
   }
+}
+
+@utility brand-gradient {
+  background-image: linear-gradient(135deg, #15803D 0%, #22C55E 50%, #4ADE80 100%);
 }
 
 @layer base {

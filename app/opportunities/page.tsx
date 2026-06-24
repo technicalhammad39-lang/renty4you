@@ -16,7 +16,7 @@ export default async function OpportunitiesPage() {
       <section className="container mx-auto px-4 mb-12">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
-            Property Sourcing <span className="text-gold">Opportunities</span>
+            Property Sourcing <span className="text-primary">Opportunities</span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
             Explore carefully researched serviced accommodation, council leasing and rent-to-rent opportunities sourced across the UK. Exclusive access for registered investors.

@@ -72,16 +72,16 @@ export function FAQ() {
             return (
               <div 
                 key={index} 
-                className={`border border-border-subtle rounded-2xl bg-surface transition-all duration-300 ${isOpen ? "shadow-md border-gold/40" : "hover:border-gold/20"}`}
+                className={`border border-border-subtle rounded-2xl bg-surface transition-all duration-300 ${isOpen ? "shadow-md border-primary/40" : "hover:border-primary/20"}`}
               >
                 <button
                   onClick={() => toggle(index)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
-                  <span className={`font-semibold text-lg transition-colors pr-8 ${isOpen ? "text-gold" : "text-foreground"}`}>
+                  <span className={`font-semibold text-lg transition-colors pr-8 ${isOpen ? "text-primary" : "text-foreground"}`}>
                     {faq.q}
                   </span>
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? "border-gold bg-gold text-white rotate-180" : "border-border-subtle bg-transparent text-muted-text"}`}>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? "border-primary bg-primary text-white rotate-180" : "border-border-subtle bg-transparent text-muted-text"}`}>
                     {isOpen ? <X size={16} weight="bold" /> : <Plus size={16} weight="bold" />}
                   </div>
                 </button>

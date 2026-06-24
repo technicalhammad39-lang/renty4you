@@ -12,7 +12,7 @@ export function Footer() {
           <div className="md:col-span-5 pr-0 md:pr-12">
             <Link href="#" className="flex items-center gap-1 mb-6">
               <span className="text-2xl font-bold tracking-tight text-foreground">
-                Rent<span className="text-gold">4u</span>Solutions
+                Rent<span className="text-primary">4u</span>Solutions
               </span>
             </Link>
             <p className="text-muted-text leading-relaxed mb-8">
@@ -20,11 +20,11 @@ export function Footer() {
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-border-subtle bg-surface text-sm font-medium text-muted-text">
-                <ShieldCheck className="text-gold" size={18} />
+                <ShieldCheck className="text-primary" size={18} />
                 PRS In Process
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-border-subtle bg-surface text-sm font-medium text-muted-text">
-                <ShieldCheck className="text-gold" size={18} />
+                <ShieldCheck className="text-primary" size={18} />
                 ICO In Process
               </div>
             </div>
@@ -35,7 +35,7 @@ export function Footer() {
             <ul className="space-y-4">
               {["Home", "Strategies", "Deal Packs", "Process", "Pricing", "FAQ", "Contact"].map((link) => (
                 <li key={link}>
-                  <Link href={`#${link === "Home" ? "" : link.toLowerCase().replace(" ", "-")}`} className="text-muted-text hover:text-gold transition-colors">
+                  <Link href={`#${link === "Home" ? "" : link.toLowerCase().replace(" ", "-")}`} className="text-muted-text hover:text-primary transition-colors">
                     {link}
                   </Link>
                 </li>
@@ -45,7 +45,7 @@ export function Footer() {
 
           <div className="md:col-span-3">
             <h4 className="font-bold mb-6 text-lg">Contact</h4>
-            <a href="mailto:teamrent4usolutions@gmail.com" className="text-muted-text hover:text-gold transition-colors break-all">
+            <a href="mailto:teamrent4usolutions@gmail.com" className="text-muted-text hover:text-primary transition-colors break-all">
               teamrent4usolutions@gmail.com
             </a>
           </div>
