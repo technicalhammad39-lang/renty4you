@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      images: [blog.image],
+      images: [blog.imageUrl || blog.image || 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1664&auto=format&fit=crop'],
       type: 'article',
       publishedTime: new Date(blog.createdAt).toISOString(),
       authors: [blog.author],
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: blog.title,
       description: blog.excerpt,
-      images: [blog.image],
+      images: [blog.imageUrl || blog.image || 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1664&auto=format&fit=crop'],
     }
   };
 }
@@ -117,7 +117,7 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Featured Image */}
         <div className="relative w-full aspect-[21/9] rounded-[32px] overflow-hidden bg-slate-100 dark:bg-slate-800 mb-16 shadow-lg">
           <Image 
-            src={blog.image} 
+            src={blog.imageUrl || blog.image || 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1664&auto=format&fit=crop'} 
             alt={blog.title} 
             fill 
             className="object-cover"
@@ -152,7 +152,7 @@ export default async function BlogDetailPage({ params }: Props) {
               {relatedBlogs.map(related => (
                 <Link href={`/blog/${related.slug}`} key={related.id} className="group">
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl mb-4 bg-slate-100 dark:bg-slate-800">
-                    <Image src={related.image} alt={related.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={related.imageUrl || related.image || 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1664&auto=format&fit=crop'} alt={related.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">
                     {related.title}

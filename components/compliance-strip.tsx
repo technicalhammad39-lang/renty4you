@@ -36,7 +36,7 @@ export function ComplianceStrip() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: 40, filter: "blur(16px)" },

@@ -22,7 +22,7 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const rtdb = getDatabase(app);
 
-// Initialize Analytics only on the client side
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let analytics: any = null;
 if (typeof window !== "undefined") {
   isSupported().then((yes) => {

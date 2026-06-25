@@ -56,6 +56,7 @@ export default function ListingEditor({ params }: { params: Promise<{ id: string
     }
   }, [isNew, resolvedParams.id]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (field: string, value: any) => {
     setFormData(prev => {
       const keys = field.split('.');
@@ -63,6 +64,7 @@ export default function ListingEditor({ params }: { params: Promise<{ id: string
         return {
           ...prev,
           [keys[0]]: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             ...(prev as any)[keys[0]],
             [keys[1]]: value
           }

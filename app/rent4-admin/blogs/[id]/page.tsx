@@ -62,7 +62,7 @@ export default function BlogEditor({ params }: { params: Promise<{ id: string }>
     }
   }, [isNew, resolvedParams.id, editor]);
 
-  const handleChange = (field: string, value: any) => {
+  const handleChange = (field: string, value: any /* eslint-disable-line */) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

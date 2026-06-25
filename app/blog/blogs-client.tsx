@@ -33,7 +33,7 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
           {/* Image */}
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
             <Image
-              src={blog.image}
+              src={blog.imageUrl || blog.image || 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=1664&auto=format&fit=crop'}
               alt={blog.title}
               fill
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

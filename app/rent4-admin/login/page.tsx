@@ -30,7 +30,7 @@ export default function AdminLoginPage() {
     try {
       await signInWithEmailAndPassword(auth, finalEmail, password);
       router.push('/rent4-admin');
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       setError("Invalid credentials. Please try again.");
       setLoading(false);

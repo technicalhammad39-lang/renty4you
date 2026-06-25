@@ -18,7 +18,7 @@ export default function NewsletterPage() {
           </svg>
         </div>
         <h3 className="text-xl font-semibold mb-2">Zero Subscribers</h3>
-        <p className="text-white/50 max-w-sm">You haven't collected any newsletter emails yet.</p>
+        <p className="text-white/50 max-w-sm">You haven&apos;t collected any newsletter emails yet.</p>
       </div>
     </div>
   );

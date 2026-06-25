@@ -44,7 +44,8 @@ export interface Blog {
   category: string;
   author: string;
   readTime: string;
-  image: string;
+  image?: string;
+  imageUrl?: string;
   excerpt: string;
   content: string;
   createdAt: Date;

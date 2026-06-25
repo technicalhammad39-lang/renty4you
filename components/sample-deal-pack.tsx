@@ -62,7 +62,7 @@ export function SampleDealPack() {
               <div className="bg-primary/10 border border-primary/30 p-6 rounded-2xl flex flex-col items-center text-center">
                 <CheckCircle className="text-primary text-5xl mb-4" weight="fill" />
                 <h3 className="text-xl font-bold mb-2">Check Your Email</h3>
-                <p className="text-muted-text">We've just sent the sample deal pack to your inbox.</p>
+                <p className="text-muted-text">We&apos;ve just sent the sample deal pack to your inbox.</p>
               </div>
             ) : (
               <form 

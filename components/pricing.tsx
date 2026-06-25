@@ -9,7 +9,7 @@ export function Pricing() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       if (cardsRef.current) {
         gsap.fromTo(
           cardsRef.current.children,

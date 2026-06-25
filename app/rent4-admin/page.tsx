@@ -55,7 +55,7 @@ export default function AdminDashboardOverview() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
-          <p className="text-white/50 mt-1">Here's what's happening with Rent4uSolutions today.</p>
+          <p className="text-white/50 mt-1">Here&apos;s what&apos;s happening with Rent4uSolutions today.</p>
         </div>
       </div>
 

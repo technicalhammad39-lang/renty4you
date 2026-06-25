@@ -26,7 +26,7 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",

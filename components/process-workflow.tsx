@@ -41,7 +41,7 @@ export function ProcessWorkflow() {
   const stepsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       if (lineRef.current) {
         gsap.fromTo(
           lineRef.current,
