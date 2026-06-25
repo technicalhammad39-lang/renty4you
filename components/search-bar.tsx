@@ -77,6 +77,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
 
   const cashflowLabels: Record<string, string> = {
     "0": "Any Cashflow",
+    "400": "£400+/mo",
     "1000": "£1,000+/mo",
     "1500": "£1,500+/mo",
     "2000": "£2,000+/mo"

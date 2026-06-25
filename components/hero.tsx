@@ -7,10 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2653&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2535&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1600607687931-ce8a6c25118c?q=80&w=2670&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2670&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2669&auto=format&fit=crop", // UK Terraced Houses (Council Leasing)
+  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2670&auto=format&fit=crop", // Modern Living Room (Serviced Accommodation)
+  "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2673&auto=format&fit=crop", // Keys/Property Deal (Sourcing)
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop", // Premium Property exterior
 ];
 
 export function Hero() {
@@ -77,7 +77,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] text-white max-w-4xl text-left"
           >
-            Council Leasing & Airbnb Property Opportunities Across The UK
+            Compliant Council Leasing & Airbnb Deals That Generate Real Cashflow
           </motion.h1>
 
           <motion.p
