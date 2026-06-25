@@ -85,7 +85,7 @@ export function ComplianceStrip() {
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            Built For Investors Who Care About Compliance
+            Built For Investors Who Care About <span className="text-primary">Compliance</span>
           </h2>
           <p className="text-lg text-muted-text">
             Every opportunity is positioned with clear assumptions, sourcing-level checks and professional due diligence notes.
@@ -100,7 +100,7 @@ export function ComplianceStrip() {
               alt="Rent4uSolutions Compliance Registrations including PRS and ICO" 
               width={1920}
               height={600}
-              className="w-full h-auto object-cover" 
+              className="w-full h-auto object-cover border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm" 
               unoptimized
             />
           </div>

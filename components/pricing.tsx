@@ -36,7 +36,7 @@ export function Pricing() {
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            Simple, Transparent Sourcing Fees
+            Simple, Transparent <span className="text-primary">Sourcing Fees</span>
           </h2>
           <p className="text-lg text-muted-text">
             A clear two-stage fee structure with no subscription model.

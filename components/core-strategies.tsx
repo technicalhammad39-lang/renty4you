@@ -84,7 +84,7 @@ export function CoreStrategies() {
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="max-w-3xl mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            Three Ways We Help Investors Source Smarter
+            Three Ways We Help Investors <span className="text-primary">Source Smarter</span>
           </h2>
           <p className="text-lg text-muted-text">
             Focused property sourcing for investors, operators and landlords building cashflow through practical UK property strategies.
@@ -95,10 +95,10 @@ export function CoreStrategies() {
           {STRATEGIES.map((strategy) => (
             <div 
               key={strategy.id} 
-              className="group relative w-full h-[380px] md:h-[400px] xl:h-[420px]"
+              className="group relative w-full h-[360px] md:h-[380px] xl:h-[400px]"
             >
               {/* Image Container */}
-              <div className="absolute top-0 left-0 w-[85%] lg:w-[88%] h-[75%] md:h-[80%] rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-0 w-[85%] lg:w-[88%] h-[85%] md:h-[88%] rounded-3xl overflow-hidden">
                 <Image 
                   src={strategy.image} 
                   alt={strategy.title} 
@@ -109,14 +109,14 @@ export function CoreStrategies() {
               </div>
 
               {/* Green Box */}
-              <div className="absolute bottom-0 right-0 w-[90%] md:w-[94%] bg-gradient-to-br from-primary to-accent text-white rounded-tl-[32px] rounded-bl-[32px] rounded-br-[32px] p-6 lg:p-8 z-10 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border-t-[8px] border-l-[8px] border-surface">
+              <div className="absolute bottom-4 lg:bottom-6 right-0 w-[90%] md:w-[94%] bg-gradient-to-br from-primary to-accent text-white rounded-tl-[32px] rounded-bl-[32px] rounded-br-[32px] p-5 lg:p-6 z-10 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border-t-[8px] border-l-[8px] border-surface">
                 
                 {/* Circular Icon */}
                 <div className="absolute -top-6 -right-4 md:-right-6 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full border border-gray-200 shadow-md flex items-center justify-center text-primary z-20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
                   <strategy.icon size={24} weight="fill" className="md:w-[26px] md:h-[26px]" />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold mb-2 lg:mb-3 pr-4 leading-tight">{strategy.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-1 lg:mb-2 pr-4 leading-tight">{strategy.title}</h3>
                 <p className="text-[13px] md:text-sm text-gray-300 leading-relaxed line-clamp-4">
                   {strategy.text}
                 </p>

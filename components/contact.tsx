@@ -10,15 +10,15 @@ export function Contact() {
           
           <div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              Let’s Discuss Your Strategy
+              Let’s Discuss Your <span className="text-primary">Strategy</span>
             </h2>
             <p className="text-lg text-muted-text mb-12">
               Ready to join the investor list, request a sample deal pack or book a discovery call? Send a message and we’ll help you understand the next step.
             </p>
 
             <div className="space-y-8 mb-12">
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center">
                   <EnvelopeSimple className="text-primary" size={24} />
                 </div>
                 <div>
@@ -29,8 +29,8 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center">
                   <Phone className="text-primary" size={24} />
                 </div>
                 <div>
@@ -41,8 +41,8 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-background border border-border-subtle flex items-center justify-center">
                   <MapPin className="text-primary" size={24} />
                 </div>
                 <div>
@@ -55,7 +55,7 @@ export function Contact() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-               <button className="px-6 py-3 rounded-full bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/50 font-medium hover:bg-[#25D366] hover:text-white transition-colors dark:text-[#25D366]">
+               <button className="px-6 py-3 rounded-full bg-[#25D366] text-white font-bold shadow-md shadow-[#25D366]/20 hover:bg-[#20bd5a] hover:shadow-lg hover:-translate-y-0.5 transition-all">
                  Join WhatsApp Group
                </button>
                <button className="px-6 py-3 rounded-full bg-background border border-border-subtle text-foreground font-medium hover:border-primary hover:text-primary transition-colors">

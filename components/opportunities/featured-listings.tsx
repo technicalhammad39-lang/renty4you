@@ -33,8 +33,8 @@ export function FeaturedListings() {
   }
 
   return (
-    <section className="py-24 bg-white dark:bg-black relative z-10">
-      <div className="container mx-auto px-4">
+    <section className="pt-8 pb-24 bg-surface relative z-10">
+      <div className="w-full px-4 md:px-8 xl:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="max-w-2xl">
             <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Live Marketplace</span>

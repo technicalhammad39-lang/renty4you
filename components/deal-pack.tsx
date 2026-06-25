@@ -55,9 +55,9 @@ export function DealPackDashboard() {
   return (
     <section id="deal-packs" ref={sectionRef} className="py-24 bg-surface relative z-10 overflow-hidden">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div ref={titleRef} className="max-w-3xl mb-16">
+        <div ref={titleRef} className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            Inside Every Deal Pack
+            Inside Every <span className="text-primary">Deal Pack</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
             Every opportunity is packaged like a clear investor report, helping you understand the property, numbers, assumptions, risks and next steps before committing.

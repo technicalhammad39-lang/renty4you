@@ -10,7 +10,7 @@ export function SampleDealPack() {
   return (
     <section className="py-24 bg-surface relative z-10 border-y border-border-subtle">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           
           <div className="relative w-full h-[600px] flex items-center justify-center">
             <div className="absolute inset-0 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
@@ -50,9 +50,9 @@ export function SampleDealPack() {
             </div>
           </div>
 
-          <div className="max-w-md w-full mx-auto lg:mx-0">
+          <div className="max-w-md w-full mx-auto lg:mx-0 text-center">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-              Download A Sample Deal Pack
+              Download A <span className="text-primary">Sample Deal Pack</span>
             </h2>
             <p className="text-lg text-muted-text mb-8">
               See how a Rent4uSolutions opportunity is packaged before joining the investor list.
