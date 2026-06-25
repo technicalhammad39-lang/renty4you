@@ -7,10 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2535&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=2670&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2653&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2535&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1600607687931-ce8a6c25118c?q=80&w=2670&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2670&auto=format&fit=crop", 
 ];
 
 export function Hero() {
