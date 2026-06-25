@@ -64,7 +64,7 @@ export function DealPackDashboard() {
           </p>
         </div>
 
-        <div ref={dashRef} className="relative w-full max-w-6xl mx-auto rounded-[32px] bg-white/60 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
+        <div ref={dashRef} className="relative w-full mx-auto rounded-[32px] bg-white/60 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
           
           {/* MacOS Browser Header */}
           <div className="flex items-center px-6 py-4 bg-white/40 dark:bg-black/40 border-b border-black/5 dark:border-white/5">

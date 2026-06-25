@@ -94,7 +94,7 @@ export function WhyPartner() {
           <div className="space-y-8">
             <div ref={textRef}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                Why Partner With Rent4uSolutions?
+                Why Investors Choose Rent4uSolutions?
               </h2>
               <p className="text-lg text-muted-text leading-relaxed">
                 We focus on compliant, cashflow-focused opportunities that are packaged clearly, analysed conservatively and prepared for investors who want to move with confidence.
