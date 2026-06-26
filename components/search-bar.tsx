@@ -113,6 +113,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
   }
 
   return (
+    <>
     <motion.div layoutId="search-container" layout transition={{ type: "spring" as any, stiffness: 300, damping: 30 }} className="w-full relative">
       
       {/* DESKTOP LAYOUT (Hidden on Mobile) */}
