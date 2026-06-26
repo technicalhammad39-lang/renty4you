@@ -3,7 +3,8 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { PhoneCall, UserCircle, ShieldCheck, ChartLineUp, Package, MagnifyingGlass, MapPin, Handshake } from "@phosphor-icons/react/dist/ssr";
 
 const LEFT_ITEMS = [
@@ -63,15 +64,7 @@ const RIGHT_ITEMS = [
 const Y_POSITIONS = [150, 316, 483, 650];
 
 export function WhyPartner() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
+  const { ref: containerRef, controls } = useScrollAnimation(0.25);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -294,29 +287,27 @@ export function WhyPartner() {
               ))}
             </svg>
 
-            {/* Left Icons */}
             <div className="flex flex-col justify-between h-full z-10 relative">
               {LEFT_ITEMS.map((item, i) => (
-                <motion.div key={item.id} initial={{opacity:0, x:-20}} whileInView={{opacity:1, x:0}} transition={{delay: i*0.1}} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
+                <motion.div key={item.id} initial={{opacity:0, x:-20}} animate={controls} variants={{ visible: { opacity:1, x:0, transition:{delay: i*0.1} } }} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
                   <item.icon size={18} className="text-primary" weight="duotone" />
                 </motion.div>
               ))}
             </div>
 
-            {/* Center Logo */}
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }} 
-              whileInView={{ scale: 1, opacity: 1 }} 
+              animate={controls}
+              variants={{ visible: { scale: 1, opacity: 1 } }} 
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[88px] h-[88px] rounded-full bg-white dark:bg-[#0B1220] shadow-[0_0_30px_rgba(34,197,94,0.2)] border border-primary/20 flex items-center justify-center"
             >
               <div className="absolute inset-0 rounded-full border border-primary/50 animate-ping opacity-20"></div>
               <Image src="/favicon.png" alt="Logo" width={52} height={52} className="object-contain relative z-10" unoptimized />
             </motion.div>
 
-            {/* Right Icons */}
             <div className="flex flex-col justify-between h-full z-10 relative">
               {RIGHT_ITEMS.map((item, i) => (
-                <motion.div key={item.id} initial={{opacity:0, x:20}} whileInView={{opacity:1, x:0}} transition={{delay: i*0.1}} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
+                <motion.div key={item.id} initial={{opacity:0, x:20}} animate={controls} variants={{ visible: { opacity:1, x:0, transition:{delay: i*0.1} } }} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
                   <item.icon size={18} className="text-primary" weight="duotone" />
                 </motion.div>
               ))}
@@ -330,15 +321,15 @@ export function WhyPartner() {
               <motion.div 
                 key={item.id}
                 initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
+                animate={controls}
+                variants={{ visible: { opacity: 1, y: 0, transition: { delay: i * 0.05 } } }}
                 className={`flex items-start gap-4 py-4 ${i !== 7 ? 'border-b border-slate-200/60 dark:border-slate-800/60' : ''}`}
               >
                 <div className="mt-0.5 shrink-0 flex items-center justify-center">
                   <motion.div 
                     initial={{ scale: 0 }} 
-                    whileInView={{ scale: 1 }} 
-                    transition={{ delay: (i * 0.05) + 0.2, type: "spring" }}
+                    animate={controls}
+                    variants={{ visible: { scale: 1, transition: { delay: (i * 0.05) + 0.2, type: "spring" } } }} 
                   >
                     <svg className="w-4 h-4 text-primary" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="16" height="16" rx="8" fill="currentColor" fillOpacity="0.1"/>

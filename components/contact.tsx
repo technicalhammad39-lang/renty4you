@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { EnvelopeSimple, MapPin, PaperPlaneRight, Phone } from "@phosphor-icons/react/dist/ssr";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const slideRight = {
   hidden: { opacity: 0, x: -40 },
@@ -27,15 +29,17 @@ const itemReveal = {
 };
 
 export function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+  const { ref, controls } = useScrollAnimation(0.25);
+
   return (
     <section id="contact" className="py-24 bg-background relative z-10 overflow-hidden">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
           <motion.div 
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.25 }}
+            animate={controls}
             variants={slideRight}
           >
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
@@ -95,8 +99,7 @@ export function Contact() {
 
           <motion.div 
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.25 }}
+            animate={controls}
             variants={slideLeft}
             className="bg-background rounded-3xl p-8 md:p-10 border border-border-subtle/50 shadow-sm relative overflow-hidden"
           >

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView, useSpring, useTransform, animate } from "framer-motion";
 import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -50,14 +51,16 @@ export function DealPackDashboard() {
   const sectionRef = useRef<HTMLElement>(null);
   const circleRef = useRef(null);
   const circleInView = useInView(circleRef, { once: false, amount: 0.5 });
+  const { ref: headerRef, controls: headerControls } = useScrollAnimation(0.25);
+  const { ref: packRef, controls: packControls } = useScrollAnimation(0.15);
 
   return (
     <section id="deal-packs" ref={sectionRef} className="py-24 bg-surface relative z-10 overflow-hidden">
       <div className="w-full px-4 md:px-8 xl:px-12">
         <motion.div 
+          ref={headerRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          animate={headerControls}
           variants={fadeUp}
           className="max-w-3xl mx-auto text-center mb-16"
         >
@@ -70,9 +73,9 @@ export function DealPackDashboard() {
         </motion.div>
 
         <motion.div 
+          ref={packRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          animate={packControls}
           variants={cardStagger}
           className="relative w-full mx-auto rounded-[32px] bg-white/60 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden"
         >

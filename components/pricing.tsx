@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -9,6 +10,10 @@ const fadeInUp = {
 };
 
 export function Pricing() {
+  const { ref: headerRef, controls: headerControls } = useScrollAnimation(0.25);
+  const { ref: cardsRef, controls: cardsControls } = useScrollAnimation(0.25);
+  const { ref: footerRef, controls: footerControls } = useScrollAnimation(0.25);
+
   return (
     <section id="pricing" className="py-24 bg-surface relative z-10 overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
@@ -16,9 +21,9 @@ export function Pricing() {
 
       <div className="w-full px-4 md:px-8 xl:px-12 relative z-10">
         <motion.div 
+          ref={headerRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.25 }}
+          animate={headerControls}
           variants={fadeInUp}
           className="text-center max-w-3xl mx-auto mb-16"
         >
@@ -31,8 +36,9 @@ export function Pricing() {
         </motion.div>
 
         <motion.div 
+          ref={cardsRef}
           initial="hidden"
-          whileInView="visible"
+          animate={cardsControls}
           viewport={{ once: false, amount: 0.25 }}
           variants={{
             visible: { transition: { staggerChildren: 0.15 } }
@@ -75,9 +81,9 @@ export function Pricing() {
         </motion.div>
 
         <motion.div 
+          ref={footerRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.25 }}
+          animate={footerControls}
           variants={fadeInUp}
           className="max-w-4xl mx-auto mt-12 space-y-4 text-center"
         >

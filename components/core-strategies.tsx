@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { City, HouseLine, Key } from "@phosphor-icons/react/dist/ssr";
+import { House, Buildings, Key, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const STRATEGIES = [
   {
@@ -65,13 +66,16 @@ const iconPop = {
 };
 
 export function CoreStrategies() {
+  const { ref: headerRef, controls: headerControls } = useScrollAnimation(0.25);
+  const { ref: gridRef, controls: gridControls } = useScrollAnimation(0.15);
+
   return (
     <section id="strategies" className="pt-8 pb-24 bg-surface relative z-10">
       <div className="w-full px-4 md:px-8 xl:px-12">
         <motion.div 
+          ref={headerRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.25 }}
+          animate={headerControls}
           className="max-w-3xl mb-16"
         >
           <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -83,9 +87,9 @@ export function CoreStrategies() {
         </motion.div>
 
         <motion.div 
+          ref={gridRef}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          animate={gridControls}
           variants={containerStagger}
           className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-12 pr-6 lg:pr-8"
         >

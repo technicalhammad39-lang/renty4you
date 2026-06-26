@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { DownloadSimple, FileText, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const slideRight = {
   hidden: { opacity: 0, x: -40 },
@@ -22,16 +23,16 @@ const popIn = {
 
 export function SampleDealPack() {
   const [submitted, setSubmitted] = useState(false);
+  const { ref, controls } = useScrollAnimation(0.1);
 
   return (
     <section className="py-24 bg-surface relative z-10 border-y border-border-subtle overflow-hidden">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           
           <motion.div 
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            animate={controls}
             variants={slideRight}
             className="relative w-full h-[400px] lg:h-[600px] flex items-center justify-center"
           >
@@ -74,8 +75,7 @@ export function SampleDealPack() {
 
           <motion.div 
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+            animate={controls}
             variants={slideLeft}
             className="max-w-md w-full mx-auto lg:mx-0 text-center"
           >
