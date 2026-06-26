@@ -6,7 +6,7 @@ import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck } from "@phosph
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
 };
 
 const cardStagger = {
@@ -19,7 +19,7 @@ const cardStagger = {
 
 const cardReveal = {
   hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as any } }
 };
 
 function AnimatedNumber({ value }: { value: number }) {
@@ -31,7 +31,7 @@ function AnimatedNumber({ value }: { value: number }) {
     if (isInView) {
       const controls = animate(0, value, {
         duration: 1.5,
-        ease: "easeOut",
+        ease: "easeOut" as any,
         onUpdate(v) {
           setDisplayValue(Math.round(v));
         }
@@ -244,7 +244,7 @@ export function DealPackDashboard() {
                        fill="none"
                        initial={{ strokeDasharray: "0 100", strokeDashoffset: "0" }}
                        animate={circleInView ? { strokeDasharray: "65 100", strokeDashoffset: "0" } : { strokeDasharray: "0 100", strokeDashoffset: "0" }}
-                       transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+                       transition={{ duration: 1.5, ease: "easeOut" as any, delay: 0.2 }}
                      >
                        <title>Break-even Occupancy: 65%</title>
                      </motion.circle>
@@ -258,7 +258,7 @@ export function DealPackDashboard() {
                        fill="none"
                        initial={{ strokeDasharray: "100 100", strokeDashoffset: "0" }}
                        animate={circleInView ? { strokeDasharray: "35 100", strokeDashoffset: "-65" } : { strokeDasharray: "100 100", strokeDashoffset: "0" }}
-                       transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+                       transition={{ duration: 1.5, ease: "easeOut" as any, delay: 0.2 }}
                      />
                    </svg>
                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">

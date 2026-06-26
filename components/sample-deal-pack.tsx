@@ -7,12 +7,12 @@ import { DownloadSimple, FileText, CheckCircle } from "@phosphor-icons/react/dis
 
 const slideRight = {
   hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" as any } }
 };
 
 const slideLeft = {
   hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" as any } }
 };
 
 const popIn = {

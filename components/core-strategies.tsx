@@ -33,12 +33,12 @@ const STRATEGIES = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
 };
 
 const fadeSlight = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" as any } }
 };
 
 const containerStagger = {
@@ -51,12 +51,12 @@ const containerStagger = {
 
 const imageReveal = {
   hidden: { opacity: 0, y: 40, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" as any } }
 };
 
 const boxSlide = {
   hidden: { x: 40 },
-  visible: { x: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { x: 0, transition: { duration: 0.7, ease: "easeOut" as any } }
 };
 
 const iconPop = {

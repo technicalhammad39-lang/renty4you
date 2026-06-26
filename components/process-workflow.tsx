@@ -35,7 +35,7 @@ const STEPS = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
 };
 
 const stepContainer = {
@@ -48,12 +48,12 @@ const stepContainer = {
 
 const itemReveal = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as any } }
 };
 
 const connectorDraw = {
   hidden: { scaleX: 0, opacity: 0 },
-  visible: { scaleX: 1, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" } }
+  visible: { scaleX: 1, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" as any } }
 };
 
 const circlePop = {

@@ -53,7 +53,7 @@ const FAQS = [
 
 const blurFade = {
   hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
-  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.7, ease: "easeOut" as any } }
 };
 
 const staggerContainer = {
