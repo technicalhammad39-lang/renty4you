@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Opportunity, subscribeToOpportunities } from "@/lib/firebase/firestore";
 import { ListingCard } from "@/components/opportunities/listing-card";
 import { Funnel, MapPinLine, HouseLine, ChartLineUp } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
 
 interface OpportunitiesClientProps {
   initialOpportunities: Opportunity[];
@@ -120,11 +121,30 @@ function OpportunitiesFilter({
       {/* Results Grid */}
       <section className="container mx-auto px-4">
         {filteredOpportunities.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
             {filteredOpportunities.map((opportunity) => (
-              <ListingCard key={opportunity.id} opportunity={opportunity} />
+              <motion.div 
+                key={opportunity.id}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                }}
+              >
+                <ListingCard opportunity={opportunity} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800">
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">No Opportunities Found</h3>

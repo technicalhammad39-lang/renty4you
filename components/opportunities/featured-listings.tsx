@@ -45,7 +45,7 @@ export function FeaturedListings() {
               </h2>
               <Link 
                 href="/opportunities"
-                className="mt-1 w-12 h-12 shrink-0 rounded-full border border-border-subtle flex items-center justify-center transition-all group hover:bg-black/5 dark:hover:bg-white/10"
+                className="mt-1 w-12 h-12 shrink-0 rounded-full border border-border-subtle flex items-center justify-center transition-all group hover:bg-black/5 dark:hover:bg-white/10 md:hidden"
               >
                 <ArrowUpRight size={24} className="text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </Link>

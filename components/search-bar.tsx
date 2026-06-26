@@ -303,27 +303,27 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
       </div>
 
       {/* MOBILE LAYOUT (Hidden on Desktop) */}
-      <div className="flex md:hidden w-full bg-white border border-border-subtle rounded-full p-2 shadow-xl items-center justify-between z-40 relative">
+      <div className="flex md:hidden w-full h-14 bg-white dark:bg-[#0B1220] border border-border-subtle rounded-full p-1.5 shadow-xl items-center justify-between z-40 relative">
         <button 
           onClick={() => setMobileModalOpen(true)}
-          className="w-12 h-12 flex shrink-0 items-center justify-center rounded-full bg-black/5 text-primary hover:bg-black/10 transition-colors"
+          className="w-11 h-11 flex shrink-0 items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M200,136a8,8,0,0,1-8,8H64a8,8,0,0,1,0-16H192A8,8,0,0,1,200,136Zm32-56H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-80,96H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16Z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M200,136a8,8,0,0,1-8,8H64a8,8,0,0,1,0-16H192A8,8,0,0,1,200,136Zm32-56H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-80,96H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16Z"></path></svg>
         </button>
         <div 
-          className="flex-1 px-4 text-left min-w-0 cursor-text"
+          className="flex-1 px-3 text-left min-w-0 cursor-text flex flex-col justify-center h-full"
           onClick={() => setMobileModalOpen(true)}
         >
-          <span className="text-sm font-bold block truncate text-slate-900">Search Deals...</span>
-          <span className="text-[10px] text-slate-500 block truncate">
+          <span className="text-[13px] font-bold block truncate text-slate-900 dark:text-white leading-tight">Search Deals</span>
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 block truncate leading-tight mt-0.5 font-medium">
             {searchLoc !== "all" ? locLabels[searchLoc] : "Anywhere"} • {searchStrategy !== "all" ? stratLabels[searchStrategy] : "Any Strategy"}
           </span>
         </div>
         <button
           onClick={handleSearch}
-          className="w-12 h-12 shrink-0 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary-hover transition-colors shadow-md"
+          className="w-11 h-11 shrink-0 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary-hover transition-colors shadow-sm"
         >
-          <MagnifyingGlass size={20} weight="bold" />
+          <MagnifyingGlass size={18} weight="bold" />
         </button>
       </div>
 
@@ -331,108 +331,125 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
       <AnimatePresence>
         {mobileModalOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: '100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '100%' }}
-            transition={{ type: "spring" as any, damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] bg-white flex flex-col md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex flex-col justify-end md:hidden"
+            onClick={() => setMobileModalOpen(false)}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border-subtle bg-white">
-              <h2 className="text-lg font-bold">Filters</h2>
-              <button 
-                onClick={() => setMobileModalOpen(false)} 
-                className="w-10 h-10 flex items-center justify-center bg-black/5 hover:bg-black/10 rounded-full"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
-              </button>
-            </div>
-            
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-8 pb-24">
+            <motion.div 
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: "spring" as any, damping: 25, stiffness: 200 }}
+              className="w-full bg-white dark:bg-[#0B1220] rounded-t-[32px] flex flex-col max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-border-subtle">
+                <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Filters</h2>
+                <button 
+                  onClick={() => setMobileModalOpen(false)} 
+                  className="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-700 dark:text-slate-300"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+                </button>
+              </div>
               
-              {/* Where */}
-              <div className="flex flex-col gap-3">
-                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Where</h3>
-                <div className="grid grid-cols-2 gap-2">
-                  {Object.keys(locLabels).map((key) => (
-                    <button
-                      key={key}
-                      onClick={() => setSearchLoc(key)}
-                      className={`text-left px-4 py-3 rounded-2xl text-sm font-semibold flex items-center gap-2 border transition-all ${
-                        searchLoc === key 
-                          ? "bg-primary/10 border-primary text-primary" 
-                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
-                      }`}
-                    >
-                      <span>{locLabels[key]}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Strategy */}
-              <div className="flex flex-col gap-3">
-                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Strategy</h3>
-                <div className="flex flex-col gap-2">
-                  {[
-                    { key: "all", desc: "View all properties" },
-                    { key: "sa", desc: "Serviced accommodation/Airbnb" },
-                    { key: "council", desc: "Housing scheme government rents" },
-                    { key: "r2r", desc: "Rent-to-rent operator cashflow" }
-                  ].map((item) => (
-                    <button
-                      key={item.key}
-                      onClick={() => setSearchStrategy(item.key)}
-                      className={`text-left px-4 py-3 rounded-2xl text-sm transition-all flex flex-col gap-0.5 border ${
-                        searchStrategy === item.key 
-                          ? "bg-primary/10 border-primary text-primary" 
-                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
-                      }`}
-                    >
-                      <span className="font-bold">{stratLabels[item.key]}</span>
-                      <span className={`text-[11px] ${searchStrategy === item.key ? "text-primary/80" : "text-slate-500"}`}>{item.desc}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Cashflow */}
-              <div className="flex flex-col gap-3">
-                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Net Cashflow</h3>
-                <div className="grid grid-cols-2 gap-2">
-                  {Object.keys(cashflowLabels).map((key) => (
-                    <button
-                      key={key}
-                      onClick={() => setSearchCashflow(key)}
-                      className={`text-left px-4 py-3 rounded-2xl text-sm font-semibold border transition-all ${
-                        searchCashflow === key 
-                          ? "bg-primary/10 border-primary text-primary" 
-                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
-                      }`}
-                    >
-                      <span>{cashflowLabels[key]}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-
-            {/* Sticky Footer */}
-            <div className="p-4 bg-white border-t border-border-subtle absolute bottom-0 left-0 right-0">
-              <button 
-                onClick={() => {
-                  setMobileModalOpen(false);
-                  handleSearch();
-                }} 
-                className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-full font-bold shadow-lg transition-colors flex items-center justify-center gap-2"
+              {/* Scrollable Content (Staggered Reveal) */}
+              <motion.div 
+                className="flex-1 overflow-y-auto p-6 flex flex-col gap-8 pb-28"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
+                }}
+                initial="hidden"
+                animate="visible"
               >
-                <MagnifyingGlass size={18} weight="bold" />
-                Show Opportunities
-              </button>
-            </div>
+                {/* Where */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-3">
+                  <h3 className="font-bold text-xs text-slate-500 uppercase tracking-wider">Where</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Object.keys(locLabels).map((key) => (
+                      <button
+                        key={key}
+                        onClick={() => setSearchLoc(key)}
+                        className={`text-left px-4 py-3 rounded-2xl text-[13px] font-semibold flex items-center gap-2 border transition-all ${
+                          searchLoc === key 
+                            ? "bg-primary/10 border-primary text-primary" 
+                            : "border-border-subtle text-slate-700 dark:text-slate-300 bg-surface hover:bg-black/5 dark:hover:bg-white/5"
+                        }`}
+                      >
+                        <span>{locLabels[key]}</span>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
 
+                {/* Strategy */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-3">
+                  <h3 className="font-bold text-xs text-slate-500 uppercase tracking-wider">Strategy</h3>
+                  <div className="flex flex-col gap-2">
+                    {[
+                      { key: "all", desc: "View all properties" },
+                      { key: "sa", desc: "Serviced accommodation/Airbnb" },
+                      { key: "council", desc: "Housing scheme government rents" },
+                      { key: "r2r", desc: "Rent-to-rent operator cashflow" }
+                    ].map((item) => (
+                      <button
+                        key={item.key}
+                        onClick={() => setSearchStrategy(item.key)}
+                        className={`text-left px-4 py-3 rounded-2xl text-[13px] transition-all flex flex-col gap-0.5 border ${
+                          searchStrategy === item.key 
+                            ? "bg-primary/10 border-primary text-primary" 
+                            : "border-border-subtle text-slate-700 dark:text-slate-300 bg-surface hover:bg-black/5 dark:hover:bg-white/5"
+                        }`}
+                      >
+                        <span className="font-bold">{stratLabels[item.key]}</span>
+                        <span className={`text-[11px] font-medium mt-0.5 ${searchStrategy === item.key ? "text-primary/80" : "text-slate-500"}`}>{item.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Cashflow */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="flex flex-col gap-3">
+                  <h3 className="font-bold text-xs text-slate-500 uppercase tracking-wider">Net Cashflow</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Object.keys(cashflowLabels).map((key) => (
+                      <button
+                        key={key}
+                        onClick={() => setSearchCashflow(key)}
+                        className={`text-left px-4 py-3 rounded-2xl text-[13px] font-semibold border transition-all ${
+                          searchCashflow === key 
+                            ? "bg-primary/10 border-primary text-primary" 
+                            : "border-border-subtle text-slate-700 dark:text-slate-300 bg-surface hover:bg-black/5 dark:hover:bg-white/5"
+                        }`}
+                      >
+                        <span>{cashflowLabels[key]}</span>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+
+              </motion.div>
+
+              {/* Sticky Footer */}
+              <div className="p-4 bg-white dark:bg-[#0B1220] border-t border-border-subtle absolute bottom-0 left-0 right-0">
+                <button 
+                  onClick={() => {
+                    setMobileModalOpen(false);
+                    handleSearch();
+                  }} 
+                  className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2"
+                >
+                  <MagnifyingGlass size={18} weight="bold" />
+                  Show Opportunities
+                </button>
+              </div>
+
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

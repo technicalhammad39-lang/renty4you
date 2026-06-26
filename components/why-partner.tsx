@@ -277,68 +277,83 @@ export function WhyPartner() {
         </div>
 
         {/* Mobile / Tablet Layout */}
-        <div className="block lg:hidden space-y-8 relative z-10 mt-8">
+        <div className="block lg:hidden relative z-10 mt-10 max-w-md mx-auto px-2 pb-16">
           
-          {/* Mobile Orbit Diagram */}
-          <div className="relative w-full max-w-[320px] mx-auto aspect-square flex items-center justify-center">
+          {/* Mobile Mind-map Diagram */}
+          <div className="relative w-full aspect-[4/3] flex items-center justify-between py-4">
+            
+            {/* SVG Connectors */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 300 220" preserveAspectRatio="none">
+              {/* Left to Center Lines */}
+              {[20, 80, 140, 200].map((y, i) => (
+                <path key={`m-left-${i}`} d={`M 30 ${y} C 80 ${y}, 100 110, 150 110`} fill="none" stroke="#22C55E" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
+              ))}
+              {/* Center to Right Lines */}
+              {[20, 80, 140, 200].map((y, i) => (
+                <path key={`m-right-${i}`} d={`M 150 110 C 200 110, 220 ${y}, 270 ${y}`} fill="none" stroke="#22C55E" strokeWidth="1" strokeOpacity="0.3" strokeDasharray="4 4" />
+              ))}
+            </svg>
+
+            {/* Left Icons */}
+            <div className="flex flex-col justify-between h-full z-10 relative">
+              {LEFT_ITEMS.map((item, i) => (
+                <motion.div key={item.id} initial={{opacity:0, x:-20}} whileInView={{opacity:1, x:0}} transition={{delay: i*0.1}} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
+                  <item.icon size={18} className="text-primary" weight="duotone" />
+                </motion.div>
+              ))}
+            </div>
+
             {/* Center Logo */}
             <motion.div 
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              className="relative z-20 w-24 h-24 rounded-full bg-white dark:bg-[#0B1220] shadow-[0_0_40px_rgba(34,197,94,0.3)] flex items-center justify-center border-2 border-primary/20"
+              initial={{ scale: 0.8, opacity: 0 }} 
+              whileInView={{ scale: 1, opacity: 1 }} 
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[88px] h-[88px] rounded-full bg-white dark:bg-[#0B1220] shadow-[0_0_30px_rgba(34,197,94,0.2)] border border-primary/20 flex items-center justify-center"
             >
-               <Image src="/favicon.png" alt="Rent4YouSolutions Logo" width={56} height={56} className="object-contain relative z-10" unoptimized />
+              <div className="absolute inset-0 rounded-full border border-primary/50 animate-ping opacity-20"></div>
+              <Image src="/favicon.png" alt="Logo" width={52} height={52} className="object-contain relative z-10" unoptimized />
             </motion.div>
 
-            {/* Orbiting Icons */}
-            {[...LEFT_ITEMS, ...RIGHT_ITEMS].map((item, i) => {
-              const total = LEFT_ITEMS.length + RIGHT_ITEMS.length;
-              // Start from top (offset -90 degrees)
-              const angle = ((i * (360 / total)) - 90) * (Math.PI / 180);
-              const radius = 130; 
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-
-              return (
-                <motion.div 
-                  key={item.id}
-                  initial={{ opacity: 0, x: 0, y: 0 }}
-                  whileInView={{ opacity: 1, x, y }}
-                  transition={{ duration: 0.8, delay: i * 0.1, type: "spring" as any, damping: 12 }}
-                  viewport={{ once: true }}
-                  className="absolute z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-[#0B1220] border border-slate-100 dark:border-slate-800 shadow-md"
-                >
-                  <item.icon size={20} weight="duotone" className="text-primary" />
+            {/* Right Icons */}
+            <div className="flex flex-col justify-between h-full z-10 relative">
+              {RIGHT_ITEMS.map((item, i) => (
+                <motion.div key={item.id} initial={{opacity:0, x:20}} whileInView={{opacity:1, x:0}} transition={{delay: i*0.1}} className="w-10 h-10 rounded-full bg-white dark:bg-[#0B1220] border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm">
+                  <item.icon size={18} className="text-primary" weight="duotone" />
                 </motion.div>
-              );
-            })}
-            
-            {/* Connecting Lines (Simple SVG circle background) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 dark:opacity-40" viewBox="0 0 320 320">
-              <circle cx="160" cy="160" r="130" fill="none" stroke="#22C55E" strokeWidth="1" strokeDasharray="4 4" />
-            </svg>
+              ))}
+            </div>
+
           </div>
 
-          {/* Details Grid Below */}
-          <div className="grid grid-cols-2 gap-x-3 gap-y-6 pt-4">
+          {/* Benefits Vertical List */}
+          <div className="mt-10 flex flex-col space-y-0 px-2">
             {[...LEFT_ITEMS, ...RIGHT_ITEMS].map((item, i) => (
               <motion.div 
-                key={item.id} 
-                initial={{ opacity: 0, y: 20 }}
+                key={item.id}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="text-center bg-white dark:bg-[#0B1220] p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
+                className={`flex items-start gap-4 py-4 ${i !== 7 ? 'border-b border-slate-200/60 dark:border-slate-800/60' : ''}`}
               >
-                <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <item.icon size={16} weight="duotone" />
+                <div className="mt-0.5 shrink-0 flex items-center justify-center">
+                  <motion.div 
+                    initial={{ scale: 0 }} 
+                    whileInView={{ scale: 1 }} 
+                    transition={{ delay: (i * 0.05) + 0.2, type: "spring" }}
+                  >
+                    <svg className="w-4 h-4 text-primary" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="16" height="16" rx="8" fill="currentColor" fillOpacity="0.1"/>
+                      <path d="M11.3333 5.5L6.74996 10.0833L4.66663 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </motion.div>
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-[12px] leading-tight mb-1">{item.title}</h3>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-tight line-clamp-3">{item.desc}</p>
+                <div className="flex flex-col text-left">
+                  <h4 className="text-[15px] font-bold text-slate-900 dark:text-white mb-0.5 tracking-tight">{item.title}</h4>
+                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
+          
         </div>
 
       </div>
