@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView, useSpring, useTransform, animate } from "framer-motion";
-import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -90,28 +90,32 @@ export function DealPackDashboard() {
             <div className="w-12 md:w-16 shrink-0"></div>
           </div>
 
-          <div className="p-6 md:p-10 lg:p-12">
-            <motion.div variants={cardReveal} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 flex items-center justify-center border border-primary/20 shadow-inner">
+          <div className="px-4 py-8 md:p-10 lg:p-12">
+            <motion.div variants={cardReveal} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 md:gap-6 mb-8 md:mb-12 w-full">
+              <div className="flex items-center gap-4 md:gap-6 w-full justify-center md:justify-start">
+                <div className="hidden md:flex w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 items-center justify-center border border-primary/20 shadow-inner">
                   <FileText className="text-primary" size={32} weight="duotone" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-2xl md:text-3xl tracking-tight text-slate-900 dark:text-white mb-2">Investment Report</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm font-medium flex items-center gap-2">
+                <div className="text-center md:text-left">
+                  <h3 className="font-bold text-xl md:text-3xl tracking-tight text-slate-900 dark:text-white mb-1 md:mb-2">Investment Report</h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm font-medium flex items-center justify-center md:justify-start gap-2">
                     Ref: SA-LPL-092 | Issued Today
                   </p>
                 </div>
               </div>
-              <button className="px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">
-                Review Opportunity
+              <button className="w-full md:w-auto px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] group flex items-center justify-center gap-2 overflow-hidden">
+                <span>Review Opportunity</span>
+                <div className="relative w-4 h-4 flex overflow-hidden">
+                  <ArrowRight weight="bold" className="absolute top-0 left-0 transition-transform duration-300 group-hover:translate-x-full" />
+                  <ArrowRight weight="bold" className="absolute top-0 left-0 -translate-x-full transition-transform duration-300 group-hover:translate-x-0" />
+                </div>
               </button>
             </motion.div>
 
             <motion.div variants={cardStagger} className="grid grid-cols-1 md:grid-cols-12 gap-8 relative">
               
               {/* Row 1, Col 1 - Property */}
-              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col gap-6 relative z-10">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-0 md:p-8 rounded-none md:rounded-3xl bg-transparent md:bg-white dark:md:bg-slate-900/50 border-none md:border md:border-slate-100 dark:md:border-slate-800 shadow-none md:shadow-lg flex flex-col gap-5 md:gap-6 relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
                   <HouseLine size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Property & Area</span>

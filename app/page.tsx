@@ -12,6 +12,7 @@ import { Pricing } from "@/components/pricing";
 import { SampleDealPack } from "@/components/sample-deal-pack";
 import { FAQ } from "@/components/faq";
 import { Contact } from "@/components/contact";
+import { SEOPropertyGuide } from "@/components/seo-guide";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
         <SampleDealPack />
         <FAQ />
         <Contact />
+        <SEOPropertyGuide />
         <Footer />
       </div>
     </main>

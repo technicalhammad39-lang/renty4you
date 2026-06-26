@@ -88,13 +88,13 @@ export function ComplianceStrip() {
             Built For Investors Who Care About <span className="text-primary">Compliance</span>
           </h2>
           <p className="text-lg text-muted-text">
-            Every opportunity is positioned with clear assumptions, sourcing-level checks and professional due diligence notes.
+            Clear assumptions, sourcing-level checks, and professional due diligence on every opportunity.
           </p>
         </div>
 
-        <div ref={cardsRef} className="w-full mt-10">
+        <div ref={cardsRef} className="w-[calc(100%+2rem)] -mx-4 md:w-full md:mx-0 mt-8 md:mt-10">
           {/* Visible Image for Users (Infinite Marquee) */}
-          <div className="w-full relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded-2xl md:rounded-3xl shadow-sm bg-white dark:bg-slate-900/50 py-6 md:py-10 flex items-center">
+          <div className="w-full relative overflow-hidden border-y border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900/50 py-5 md:py-10 flex items-center">
             {/* Gradient masks for smooth fading edges */}
             <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>

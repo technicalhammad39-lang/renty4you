@@ -4,10 +4,20 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { Plus, X } from "@phosphor-icons/react/dist/ssr";
 
+import Script from "next/script";
+
 const FAQS = [
   {
+    q: "What is UK property sourcing and how does it work?",
+    a: "Property sourcing in the UK involves finding, negotiating, and packaging high-yield investment properties for investors. Deal sourcers handle the heavy lifting of market research, viewings, and financial due diligence."
+  },
+  {
     q: "Is this property definitely suitable for Airbnb or serviced accommodation?",
-    a: "Rent4uSolutions only labels a property as SA-ready after basic checks on lease wording, likely lender stance and building rules. Final approval must be confirmed by your own solicitor and lender."
+    a: "Rent4uSolutions labels a property as SA-ready after basic checks on lease wording and building rules. Final approval must be confirmed by your solicitor and lender."
+  },
+  {
+    q: "How do rent-to-rent (R2R) deals work in the UK?",
+    a: "Rent-to-rent involves leasing a property from a landlord for a fixed guaranteed rent, and then sub-letting it (often as an HMO or serviced accommodation) for a higher return. The sourcer secures this agreement on your behalf."
   },
   {
     q: "How realistic are the Airbnb income projections?",
@@ -38,18 +48,41 @@ const FAQS = [
     a: "Some schemes offer secure or guaranteed rent, often slightly below open-market rent in exchange for reduced risk and hassle."
   },
   {
-    q: "Does Rent4uSolutions arrange the council lease for me?",
-    a: "Rent4uSolutions does not draft or sign leases on the client’s behalf. Its role is to source suitable properties and highlight relevant schemes or contacts."
-  },
-  {
     q: "Can I switch a council-leased property to serviced accommodation later?",
     a: "Council leasing and serviced accommodation have very different requirements. Any change of use must be agreed with the lender, lease, council or other relevant parties."
+  },
+  {
+    q: "What is deal packaging in property investment?",
+    a: "Deal packaging involves presenting an investor with a fully researched property opportunity, including estimated ROI, refurbishment costs, and exit strategies, saving the investor time and effort."
+  },
+  {
+    q: "Are your property sourcing fees refundable?",
+    a: "Our sourcing fees are generally structured in stages. Reservation fees secure the deal, and completion fees are paid upon successful exchange. Please review our terms of business for exact refund policies."
+  },
+  {
+    q: "Do you offer off-market property deals?",
+    a: "Yes, many of our sourced properties are off-market, meaning they are not available on standard portals like Rightmove or Zoopla, giving our investors an exclusive advantage."
   },
   {
     q: "Does Rent4uSolutions guarantee performance?",
     a: "No. All figures are estimates and should be independently verified by the client and professional advisers."
   }
 ];
+
+const generateFAQSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+};
 
 const blurFade = {
   hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
@@ -93,6 +126,11 @@ export function FAQ() {
 
   return (
     <section id="faq" className="py-16 md:py-24 bg-background relative z-10 overflow-hidden">
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema()) }}
+      />
       <div className="max-w-4xl mx-auto px-4 md:px-6">
         <motion.div 
           ref={headerRef}

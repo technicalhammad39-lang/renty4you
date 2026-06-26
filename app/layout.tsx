@@ -9,21 +9,91 @@ const pjs = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Rent4uSolutions | UK Property Sourcing for Rent-to-Rent, Airbnb & Council Leasing',
-  description: 'Rent4uSolutions sources compliant, cashflow-focused Rent-to-Rent, Serviced Accommodation and Council Leasing opportunities for UK property investors.',
-  keywords: 'UK property sourcing, rent to rent sourcing, serviced accommodation sourcing, Airbnb property sourcing UK, council leasing property, Rent4uSolutions',
+  metadataBase: new URL('https://rent4usolutions.com'),
+  title: 'Rent4uSolutions | UK Property Sourcing & Investment Opportunities',
+  description: 'Discover compliant UK property sourcing opportunities including rent-to-rent, serviced accommodation and council leasing deals for premium investors.',
+  keywords: 'property sourcing UK, rent to rent deals UK, serviced accommodation deals, council leasing opportunities, property investment opportunities UK, buy to let investment deals, high cashflow property deals',
+  authors: [{ name: 'Rent4uSolutions' }],
+  creator: 'Rent4uSolutions',
+  publisher: 'Rent4uSolutions',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'Rent4uSolutions | Premium UK Property Sourcing',
-    description: 'We source compliant, cashflow-focused Rent-to-Rent, Serviced Accommodation and Council Leasing opportunities.',
+    title: 'Rent4uSolutions | UK Property Sourcing & Investment',
+    description: 'Discover compliant UK property sourcing opportunities including rent-to-rent, serviced accommodation and council leasing deals.',
+    url: 'https://rent4usolutions.com',
+    siteName: 'Rent4uSolutions',
+    images: [
+      {
+        url: '/og-image.jpg', // Placeholder for OG image
+        width: 1200,
+        height: 630,
+        alt: 'Rent4uSolutions Premium Property Sourcing UK',
+      }
+    ],
+    locale: 'en_GB',
     type: 'website',
-  }
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rent4uSolutions | UK Property Sourcing',
+    description: 'We source compliant, cashflow-focused Rent-to-Rent, Airbnb and Council Sourcing opportunities across the UK.',
+    images: ['/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://rent4usolutions.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Rent4uSolutions",
+  "url": "https://rent4usolutions.com",
+  "logo": "https://rent4usolutions.com/Rent4you-light-mode.png",
+  "description": "UK Property Sourcing & Investment Opportunities",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "UK"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "info@rent4usolutions.com"
+  },
+  "sameAs": [
+    "https://linkedin.com/company/rent4usolutions",
+    "https://twitter.com/rent4usolutions"
+  ]
 };
 
 import { SearchProvider } from '@/components/search-context';
 import { PresenceTracker } from '@/components/presence-tracker';
+import Script from 'next/script';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={pjs.variable} suppressHydrationWarning>
+      <head>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased text-foreground bg-background" suppressHydrationWarning>
         <Providers>
           <SearchProvider>

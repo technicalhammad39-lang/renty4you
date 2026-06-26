@@ -1,8 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { Navbar } from "@/components/navbar";
 import { getOpportunityBySlug, getOpportunities } from "@/lib/firebase/firestore";
-import { MapPin, House, Users, ShieldCheck, CurrencyGbp, ChartBar, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { MapPin, House, Users, ShieldCheck, CurrencyGbp, ChartBar, CheckCircle, ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -61,30 +63,38 @@ export default async function OpportunityDetailPage({ params }: Props) {
   };
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black pt-32 pb-24">
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-white dark:bg-black pt-28 md:pt-36 pb-24">
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
 
-      <div className="container mx-auto px-4 max-w-7xl">
-        
-        {/* Header Section */}
-        <div className="mb-10">
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold flex items-center gap-1.5 uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              {opportunity.strategy}
-            </span>
-            <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold flex items-center gap-1">
-              <MapPin size={18} weight="fill" className="text-slate-400" /> {opportunity.location}
-            </span>
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          
+          {/* Back Button */}
+          <Link href="/opportunities" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors group mb-8 md:mb-12 bg-slate-50 hover:bg-white dark:bg-slate-900/50 dark:hover:bg-slate-900 px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md w-fit">
+            <ArrowLeft size={16} weight="bold" className="transition-transform duration-300 group-hover:-translate-x-1" />
+            <span>Back to Opportunities</span>
+          </Link>
+
+          {/* Header Section */}
+          <div className="mb-12 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold flex items-center gap-2 uppercase tracking-wider border border-primary/20">
+                <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse"></span>
+                {opportunity.strategy}
+              </span>
+              <span className="text-slate-600 dark:text-slate-400 text-sm font-medium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900/50 px-4 py-1.5 rounded-full border border-slate-200/50 dark:border-slate-800/50">
+                <MapPin size={16} weight="duotone" className="text-primary" /> {opportunity.location}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black tracking-tight text-slate-900 dark:text-white leading-[1.05]">
+              {opportunity.title}
+            </h1>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-2 leading-[1.1]">
-            {opportunity.title}
-          </h1>
-        </div>
 
         {/* Hero Image Gallery (Airbnb Style) */}
         <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-3 md:gap-4 h-[400px] md:h-[500px] lg:h-[550px] rounded-[32px] lg:rounded-[40px] overflow-hidden mb-16 shadow-xl">
@@ -357,5 +367,6 @@ export default async function OpportunityDetailPage({ params }: Props) {
         </div>
       </div>
     </main>
+    </>
   );
 }

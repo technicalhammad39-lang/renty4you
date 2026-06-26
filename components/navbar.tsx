@@ -88,7 +88,7 @@ export function Navbar() {
         className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled
             ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-1.5 md:py-2 px-5 md:px-8"
-            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-2 md:py-2.5 px-5 md:px-8"
+            : "bg-white/95 md:bg-white/75 backdrop-blur-md border-white/15 shadow-md py-2 md:py-2.5 px-5 md:px-8"
         }`}
       >
         <Link href="#" className="flex items-center gap-1 group">

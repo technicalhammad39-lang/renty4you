@@ -54,7 +54,7 @@ export function Hero({
     return () => ctx.revert();
   }, []);
 
-  const heightClass = compact ? "h-[50vh] min-h-[400px]" : "h-[85vh] min-h-[650px]";
+  const heightClass = compact ? "h-[40vh] min-h-[320px] md:min-h-[360px]" : "h-[85vh] min-h-[650px]";
 
   return (
     <div ref={containerRef} className={`sticky top-0 left-0 w-full ${heightClass} overflow-hidden z-0 bg-black flex flex-col justify-center`}>
@@ -88,7 +88,7 @@ export function Hero({
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className={`font-bold tracking-tight leading-[1.15] text-white text-left ${compact ? "max-w-3xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "max-w-4xl text-[32px] sm:text-4xl md:text-6xl lg:text-7xl"}`}
+            className={`font-bold tracking-tight leading-[1.1] text-white text-left ${compact ? "max-w-3xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "max-w-4xl text-[40px] sm:text-5xl md:text-6xl lg:text-7xl"}`}
           >
             {title || "Cashflow Focused Council Leasing & Airbnb Deals"}
           </motion.h1>
