@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { House, Buildings, Key, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { House, Buildings, Key, ArrowRight, HouseLine, City } from "@phosphor-icons/react/dist/ssr";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const STRATEGIES = [

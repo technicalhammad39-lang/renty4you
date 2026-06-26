@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
-import { OpportunitiesClient } from "../opportunities-client";
+import OpportunitiesClient from "../opportunities-client";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
 import { Opportunity } from "@/lib/firebase/firestore";
@@ -11,19 +11,25 @@ import { notFound } from "next/navigation";
 // Supported dynamic locations for SEO
 const VALID_LOCATIONS = ["london", "manchester", "birmingham", "liverpool", "leeds", "glasgow", "nottingham", "sheffield"];
 
-export async function generateMetadata({ params }: { params: { location: string } }): Promise<Metadata> {
-  const loc = params.location.charAt(0).toUpperCase() + params.location.slice(1);
+type Props = {
+  params: Promise<{ location: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { location } = await params;
+  const loc = location.charAt(0).toUpperCase() + location.slice(1);
   return {
     title: `Property Sourcing & Investment Deals in ${loc} | Rent4uSolutions`,
     description: `Discover high-yield property investment opportunities in ${loc}. Explore exclusive rent-to-rent, serviced accommodation, and council leasing deals in the ${loc} area.`,
     alternates: {
-      canonical: `https://rent4usolutions.com/opportunities/${params.location.toLowerCase()}`,
+      canonical: `https://rent4usolutions.com/opportunities/${location.toLowerCase()}`,
     }
   };
 }
 
-export default async function LocationOpportunitiesPage({ params }: { params: { location: string } }) {
-  const locationRaw = params.location.toLowerCase();
+export default async function LocationOpportunitiesPage({ params }: Props) {
+  const { location } = await params;
+  const locationRaw = location.toLowerCase();
   
   // Validation for programmatic SEO to avoid infinite useless pages
   if (!VALID_LOCATIONS.includes(locationRaw)) {
