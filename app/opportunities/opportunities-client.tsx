@@ -6,6 +6,7 @@ import { Opportunity, subscribeToOpportunities } from "@/lib/firebase/firestore"
 import { ListingCard } from "@/components/opportunities/listing-card";
 import { Funnel, MapPinLine, HouseLine, ChartLineUp } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
+import { SearchBar } from "@/components/search-bar";
 
 interface OpportunitiesClientProps {
   initialOpportunities: Opportunity[];
@@ -60,61 +61,10 @@ function OpportunitiesFilter({
 
   return (
     <>
-      {/* Sticky Filter Bar */}
-      <div className="sticky top-20 z-40 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 mb-12 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Strategy Filter */}
-            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-              <button
-                onClick={() => updateFilters("strategy", "All")}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-all ${
-                  currentStrategy === "All"
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-black"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
-                }`}
-              >
-                All Strategies
-              </button>
-              {strategies.map((strategy) => (
-                <button
-                  key={strategy}
-                  onClick={() => updateFilters("strategy", strategy)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${
-                    currentStrategy === strategy
-                      ? "bg-primary text-white shadow-md shadow-primary/20"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  {strategy === "Serviced Accommodation" && <HouseLine size={16} weight="bold" />}
-                  {strategy === "Council Leasing" && <ChartLineUp size={16} weight="bold" />}
-                  {strategy === "Rent-to-Rent" && <Funnel size={16} weight="bold" />}
-                  {strategy}
-                </button>
-              ))}
-            </div>
-
-            {/* Location Filter */}
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              <div className="relative flex-grow md:w-64">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <MapPinLine size={18} className="text-slate-400" />
-                </div>
-                <select
-                  value={currentLocation}
-                  onChange={(e) => updateFilters("location", e.target.value)}
-                  className="block w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-primary dark:bg-slate-800 dark:text-white cursor-pointer appearance-none"
-                >
-                  <option value="All">All Locations</option>
-                  {locations.map((loc) => (
-                    <option key={loc} value={loc}>
-                      {loc}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
+      {/* Search Bar Component */}
+      <div className="relative z-40 mb-6 flex justify-center px-4 w-full -translate-y-1/2 -mt-8">
+        <div className="w-full max-w-[1000px]">
+          <SearchBar variant="full" />
         </div>
       </div>
 

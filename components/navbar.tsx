@@ -87,8 +87,8 @@ export function Navbar() {
       <nav
         className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled
-            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-2.5 md:py-3 px-5 md:px-8"
-            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-3 md:py-4 px-5 md:px-10"
+            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-1.5 md:py-2 px-5 md:px-8"
+            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-2 md:py-2.5 px-5 md:px-8"
         }`}
       >
         <Link href="#" className="flex items-center gap-1 group">
@@ -97,7 +97,7 @@ export function Navbar() {
             alt="Rent4uSolutions"
             width={180}
             height={44}
-            className="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
+            className="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
             priority
           />
         </Link>

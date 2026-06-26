@@ -116,7 +116,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
     <motion.div layoutId="search-container" layout transition={{ type: "spring" as any, stiffness: 300, damping: 30 }} className="w-full relative">
       
       {/* DESKTOP LAYOUT (Hidden on Mobile) */}
-      <div className="hidden md:grid w-full bg-white border border-border-subtle rounded-full p-2 shadow-2xl grid-cols-4 md:overflow-visible divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
+      <div className="hidden md:grid w-full bg-white border border-border-subtle rounded-full p-1.5 shadow-2xl grid-cols-4 md:overflow-visible divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
         
         {/* WHERE FILTER */}
         <div 
@@ -126,10 +126,10 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setStrategyOpen(false);
             setCashflowOpen(false);
           }}
-          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-4 px-5 py-3 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
-            <MapPin size={22} weight="duotone" />
+            <MapPin size={20} weight="duotone" />
           </div>
 
           <div className="flex-1 min-w-0">
@@ -182,10 +182,10 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setCashflowOpen(false);
           }}
-          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-4 px-5 py-3 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
-            <HouseLine size={22} weight="duotone" />
+            <HouseLine size={20} weight="duotone" />
           </div>
           <div className="flex-1 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-primary block leading-none">Strategy</span>
@@ -242,10 +242,10 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setStrategyOpen(false);
           }}
-          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-4 px-5 py-3 cursor-pointer hover:bg-black/5 transition-all relative text-left h-full"
         >
           <div className="text-primary">
-            <CurrencyGbp size={22} weight="duotone" />
+            <CurrencyGbp size={20} weight="duotone" />
           </div>
           <div className="flex-1 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-primary block leading-none">Net Cashflow</span>
@@ -290,11 +290,11 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
         </div>
 
         {/* SEARCH BUTTON */}
-        <div className="shrink-0 w-auto flex items-center justify-end px-3 py-1">
+        <div className="shrink-0 w-auto flex items-center justify-end px-2 py-1">
           <motion.button
             layoutId="search-button"
             onClick={handleSearch}
-            className="w-full px-6 py-4 rounded-full bg-primary text-white font-bold text-[13px] md:text-sm flex items-center justify-center gap-2 hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(212,160,23,0.5)] active:scale-95 cursor-pointer whitespace-nowrap"
+            className="w-full px-5 py-3 rounded-full bg-primary text-white font-bold text-[13px] md:text-sm flex items-center justify-center gap-2 hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(212,160,23,0.5)] active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <MagnifyingGlass size={18} weight="bold" />
             <motion.span layoutId="search-text">Search Deals</motion.span>
