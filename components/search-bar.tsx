@@ -101,7 +101,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
          layout
          className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white cursor-pointer shadow-md hover:bg-primary-hover transition-colors"
          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+         transition={{ type: "spring" as any, stiffness: 300, damping: 30 }}
        >
          <motion.div layoutId="search-icon" className="text-white">
             <MagnifyingGlass size={18} weight="bold" />
@@ -111,7 +111,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
   }
 
   return (
-    <motion.div layoutId="search-container" layout transition={{ type: "spring", stiffness: 300, damping: 30 }} className="w-full relative">
+    <motion.div layoutId="search-container" layout transition={{ type: "spring" as any, stiffness: 300, damping: 30 }} className="w-full relative">
       {/* Airbnb style Search Panel */}
       <div className="w-full bg-white border border-border-subtle rounded-full p-2 shadow-xl md:shadow-2xl flex overflow-x-auto snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-4 md:overflow-visible gap-2 md:gap-0 divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
         

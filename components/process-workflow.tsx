@@ -58,7 +58,7 @@ const connectorDraw = {
 
 const circlePop = {
   hidden: { scale: 0, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 15 } }
+  visible: { scale: 1, opacity: 1, transition: { type: "spring" as any, stiffness: 200, damping: 15 } }
 };
 
 export function ProcessWorkflow() {
