@@ -84,6 +84,8 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
   };
 
   
+  const [mobileModalOpen, setMobileModalOpen] = useState(false);
+
   // If this instance is meant to be the full one, but we are in compact mode, render a placeholder
   if (variant === "full" && isCompact) {
     return <div className="w-full h-[76px] invisible pointer-events-none" />;
@@ -112,8 +114,9 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
 
   return (
     <motion.div layoutId="search-container" layout transition={{ type: "spring" as any, stiffness: 300, damping: 30 }} className="w-full relative">
-      {/* Airbnb style Search Panel */}
-      <div className="w-full bg-white border border-border-subtle rounded-full p-2 shadow-xl md:shadow-2xl flex overflow-x-auto snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-4 md:overflow-visible gap-2 md:gap-0 divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
+      
+      {/* DESKTOP LAYOUT (Hidden on Mobile) */}
+      <div className="hidden md:grid w-full bg-white border border-border-subtle rounded-full p-2 shadow-2xl grid-cols-4 md:overflow-visible divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
         
         {/* WHERE FILTER */}
         <div 
@@ -123,7 +126,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setStrategyOpen(false);
             setCashflowOpen(false);
           }}
-          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <MapPin size={22} weight="duotone" />
@@ -179,7 +182,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setCashflowOpen(false);
           }}
-          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <HouseLine size={22} weight="duotone" />
@@ -198,7 +201,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-[calc(100%+0.5rem)] left-0 md:left-auto md:right-0 lg:left-0 lg:right-auto mt-1 w-72 bg-white border border-border-subtle rounded-3xl shadow-2xl p-3 z-50 text-left"
+                className="absolute top-[calc(100%+0.5rem)] md:right-0 lg:left-0 lg:right-auto mt-1 w-72 bg-white border border-border-subtle rounded-3xl shadow-2xl p-3 z-50 text-left"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="text-xs font-bold text-slate-500 px-3 py-2 border-b border-border-subtle/50 mb-1">
@@ -239,7 +242,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setStrategyOpen(false);
           }}
-          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-auto flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <CurrencyGbp size={22} weight="duotone" />
@@ -258,7 +261,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-[calc(100%+0.5rem)] left-0 md:left-auto md:right-0 mt-1 w-64 bg-white border border-border-subtle rounded-3xl shadow-2xl p-3 z-50 text-left"
+                className="absolute top-[calc(100%+0.5rem)] md:right-0 mt-1 w-64 bg-white border border-border-subtle rounded-3xl shadow-2xl p-3 z-50 text-left"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="text-xs font-bold text-slate-500 px-3 py-2 border-b border-border-subtle/50 mb-1">
@@ -287,18 +290,153 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
         </div>
 
         {/* SEARCH BUTTON */}
-        <div className="shrink-0 w-[220px] md:w-auto snap-start flex items-center justify-center md:justify-end px-3 py-1">
+        <div className="shrink-0 w-auto flex items-center justify-end px-3 py-1">
           <motion.button
             layoutId="search-button"
             onClick={handleSearch}
             className="w-full px-6 py-4 rounded-full bg-primary text-white font-bold text-[13px] md:text-sm flex items-center justify-center gap-2 hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(212,160,23,0.5)] active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <MagnifyingGlass size={18} weight="bold" />
-            <motion.span layoutId="search-text">Search Sourced Deals</motion.span>
+            <motion.span layoutId="search-text">Search Deals</motion.span>
           </motion.button>
         </div>
-
       </div>
+
+      {/* MOBILE LAYOUT (Hidden on Desktop) */}
+      <div className="flex md:hidden w-full bg-white border border-border-subtle rounded-full p-2 shadow-xl items-center justify-between z-40 relative">
+        <button 
+          onClick={() => setMobileModalOpen(true)}
+          className="w-12 h-12 flex shrink-0 items-center justify-center rounded-full bg-black/5 text-primary hover:bg-black/10 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M200,136a8,8,0,0,1-8,8H64a8,8,0,0,1,0-16H192A8,8,0,0,1,200,136Zm32-56H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-80,96H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16Z"></path></svg>
+        </button>
+        <div 
+          className="flex-1 px-4 text-left min-w-0 cursor-text"
+          onClick={() => setMobileModalOpen(true)}
+        >
+          <span className="text-sm font-bold block truncate text-slate-900">Search Deals...</span>
+          <span className="text-[10px] text-slate-500 block truncate">
+            {searchLoc !== "all" ? locLabels[searchLoc] : "Anywhere"} • {searchStrategy !== "all" ? stratLabels[searchStrategy] : "Any Strategy"}
+          </span>
+        </div>
+        <button
+          onClick={handleSearch}
+          className="w-12 h-12 shrink-0 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary-hover transition-colors shadow-md"
+        >
+          <MagnifyingGlass size={20} weight="bold" />
+        </button>
+      </div>
+
+      {/* MOBILE FILTER MODAL */}
+      <AnimatePresence>
+        {mobileModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{ type: "spring" as any, damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col md:hidden"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-border-subtle bg-white">
+              <h2 className="text-lg font-bold">Filters</h2>
+              <button 
+                onClick={() => setMobileModalOpen(false)} 
+                className="w-10 h-10 flex items-center justify-center bg-black/5 hover:bg-black/10 rounded-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+              </button>
+            </div>
+            
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-8 pb-24">
+              
+              {/* Where */}
+              <div className="flex flex-col gap-3">
+                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Where</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {Object.keys(locLabels).map((key) => (
+                    <button
+                      key={key}
+                      onClick={() => setSearchLoc(key)}
+                      className={`text-left px-4 py-3 rounded-2xl text-sm font-semibold flex items-center gap-2 border transition-all ${
+                        searchLoc === key 
+                          ? "bg-primary/10 border-primary text-primary" 
+                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
+                      }`}
+                    >
+                      <span>{locLabels[key]}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Strategy */}
+              <div className="flex flex-col gap-3">
+                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Strategy</h3>
+                <div className="flex flex-col gap-2">
+                  {[
+                    { key: "all", desc: "View all properties" },
+                    { key: "sa", desc: "Serviced accommodation/Airbnb" },
+                    { key: "council", desc: "Housing scheme government rents" },
+                    { key: "r2r", desc: "Rent-to-rent operator cashflow" }
+                  ].map((item) => (
+                    <button
+                      key={item.key}
+                      onClick={() => setSearchStrategy(item.key)}
+                      className={`text-left px-4 py-3 rounded-2xl text-sm transition-all flex flex-col gap-0.5 border ${
+                        searchStrategy === item.key 
+                          ? "bg-primary/10 border-primary text-primary" 
+                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
+                      }`}
+                    >
+                      <span className="font-bold">{stratLabels[item.key]}</span>
+                      <span className={`text-[11px] ${searchStrategy === item.key ? "text-primary/80" : "text-slate-500"}`}>{item.desc}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Cashflow */}
+              <div className="flex flex-col gap-3">
+                <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Net Cashflow</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {Object.keys(cashflowLabels).map((key) => (
+                    <button
+                      key={key}
+                      onClick={() => setSearchCashflow(key)}
+                      className={`text-left px-4 py-3 rounded-2xl text-sm font-semibold border transition-all ${
+                        searchCashflow === key 
+                          ? "bg-primary/10 border-primary text-primary" 
+                          : "border-border-subtle text-slate-700 bg-surface hover:bg-black/5"
+                      }`}
+                    >
+                      <span>{cashflowLabels[key]}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Sticky Footer */}
+            <div className="p-4 bg-white border-t border-border-subtle absolute bottom-0 left-0 right-0">
+              <button 
+                onClick={() => {
+                  setMobileModalOpen(false);
+                  handleSearch();
+                }} 
+                className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-full font-bold shadow-lg transition-colors flex items-center justify-center gap-2"
+              >
+                <MagnifyingGlass size={18} weight="bold" />
+                Show Opportunities
+              </button>
+            </div>
+
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </motion.div>
   );
 }

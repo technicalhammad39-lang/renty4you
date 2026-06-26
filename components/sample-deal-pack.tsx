@@ -31,7 +31,7 @@ export function SampleDealPack() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={slideRight}
             className="relative w-full h-[400px] lg:h-[600px] flex items-center justify-center"
           >
@@ -75,7 +75,7 @@ export function SampleDealPack() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={slideLeft}
             className="max-w-md w-full mx-auto lg:mx-0 text-center"
           >

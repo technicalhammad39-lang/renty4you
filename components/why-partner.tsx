@@ -87,34 +87,34 @@ export function WhyPartner() {
   };
 
   return (
-    <section className="pt-24 pb-12 xl:pt-32 bg-[#FAFAF9] dark:bg-[#0B1220] relative overflow-hidden">
+    <section className="pt-16 pb-0 xl:pt-20 bg-[#FAFAF9] dark:bg-[#0B1220] relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="w-full px-4 md:px-8 xl:px-12 relative z-10" ref={containerRef}>
         
-        <div className="text-center max-w-5xl xl:max-w-6xl mx-auto mb-8 xl:mb-12 relative z-20">
+        <div className="text-center max-w-5xl xl:max-w-6xl mx-auto mb-4 xl:mb-2 relative z-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={controls}
             variants={{ visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}
             className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4"
           >
-            Why Property Investors Partner With <br className="hidden lg:block" />
-            <span className="text-primary">Rent4uSolutions</span>
+            Why Partner <br className="md:hidden" />
+            <span className="text-primary">With Us</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={controls}
             variants={{ visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } } }}
-            className="text-lg text-slate-600 dark:text-slate-400"
+            className="text-sm md:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
             Our premium sourcing ecosystem connects you to the right opportunities.
           </motion.p>
         </div>
 
         {/* Desktop Ecosystem Layout (Fixed aspect ratio 1200/600 ensures nodes and SVG align perfectly) */}
-        <div className="hidden lg:block relative w-full mx-auto" style={{ aspectRatio: '1200/600' }}>
+        <div className="hidden lg:block relative w-full mx-auto -mt-6 xl:-mt-10" style={{ aspectRatio: '1200/600' }}>
           
           {/* SVG Connection Lines */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -277,30 +277,65 @@ export function WhyPartner() {
         </div>
 
         {/* Mobile / Tablet Layout */}
-        <div className="block xl:hidden space-y-12 relative z-10">
-          <div className="flex justify-center mb-12">
-            <div className="relative">
-               <div className="absolute inset-0 bg-primary blur-[40px] rounded-full opacity-40"></div>
-               <Image src="/favicon.png" alt="Rent4YouSolutions Logo" width={100} height={100} className="object-contain relative z-10 drop-shadow-xl" unoptimized />
-            </div>
+        <div className="block lg:hidden space-y-8 relative z-10 mt-8">
+          
+          {/* Mobile Orbit Diagram */}
+          <div className="relative w-full max-w-[320px] mx-auto aspect-square flex items-center justify-center">
+            {/* Center Logo */}
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="relative z-20 w-24 h-24 rounded-full bg-white dark:bg-[#0B1220] shadow-[0_0_40px_rgba(34,197,94,0.3)] flex items-center justify-center border-2 border-primary/20"
+            >
+               <Image src="/favicon.png" alt="Rent4YouSolutions Logo" width={56} height={56} className="object-contain relative z-10" unoptimized />
+            </motion.div>
+
+            {/* Orbiting Icons */}
+            {[...LEFT_ITEMS, ...RIGHT_ITEMS].map((item, i) => {
+              const total = LEFT_ITEMS.length + RIGHT_ITEMS.length;
+              // Start from top (offset -90 degrees)
+              const angle = ((i * (360 / total)) - 90) * (Math.PI / 180);
+              const radius = 130; 
+              const x = Math.cos(angle) * radius;
+              const y = Math.sin(angle) * radius;
+
+              return (
+                <motion.div 
+                  key={item.id}
+                  initial={{ opacity: 0, x: 0, y: 0 }}
+                  whileInView={{ opacity: 1, x, y }}
+                  transition={{ duration: 0.8, delay: i * 0.1, type: "spring" as any, damping: 12 }}
+                  viewport={{ once: true }}
+                  className="absolute z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-[#0B1220] border border-slate-100 dark:border-slate-800 shadow-md"
+                >
+                  <item.icon size={20} weight="duotone" className="text-primary" />
+                </motion.div>
+              );
+            })}
+            
+            {/* Connecting Lines (Simple SVG circle background) */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 dark:opacity-40" viewBox="0 0 320 320">
+              <circle cx="160" cy="160" r="130" fill="none" stroke="#22C55E" strokeWidth="1" strokeDasharray="4 4" />
+            </svg>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[...LEFT_ITEMS, ...RIGHT_ITEMS].map((item) => (
+          {/* Details Grid Below */}
+          <div className="grid grid-cols-2 gap-x-3 gap-y-6 pt-4">
+            {[...LEFT_ITEMS, ...RIGHT_ITEMS].map((item, i) => (
               <motion.div 
-                key={item.id}
+                key={item.id} 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-4 bg-white dark:bg-[#0B1220] p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
+                transition={{ delay: i * 0.05 }}
+                className="text-center bg-white dark:bg-[#0B1220] p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
               >
-                <div className="w-12 h-12 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <item.icon size={24} weight="duotone" />
+                <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <item.icon size={16} weight="duotone" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-0.5">{item.title}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
-                </div>
+                <h3 className="font-bold text-slate-900 dark:text-white text-[12px] leading-tight mb-1">{item.title}</h3>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-tight line-clamp-3">{item.desc}</p>
               </motion.div>
             ))}
           </div>

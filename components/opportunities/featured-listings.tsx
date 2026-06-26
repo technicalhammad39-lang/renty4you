@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Opportunity, subscribeToOpportunities } from "@/lib/firebase/firestore";
 import { ListingCard } from "./listing-card";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 export function FeaturedListings() {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -35,12 +35,21 @@ export function FeaturedListings() {
   return (
     <section className="pt-8 pb-24 bg-surface relative z-10">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-          <div className="max-w-2xl">
-            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Live Marketplace</span>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-              Latest <span className="text-primary">Sourced</span> Opportunities
-            </h2>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+          <div className="w-full md:w-auto">
+            <span className="text-primary font-bold tracking-wider uppercase text-xs md:text-sm mb-2 block">Live Marketplace</span>
+            <div className="flex items-start justify-between md:justify-start gap-6">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1]">
+                <span className="text-primary block">Latest</span>
+                <span className="text-slate-900 dark:text-white block">Opportunities</span>
+              </h2>
+              <Link 
+                href="/opportunities"
+                className="mt-1 w-12 h-12 shrink-0 rounded-full border border-border-subtle flex items-center justify-center transition-all group hover:bg-black/5 dark:hover:bg-white/10"
+              >
+                <ArrowUpRight size={24} className="text-slate-900 dark:text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </Link>
+            </div>
           </div>
           <Link 
             href="/opportunities" 

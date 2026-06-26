@@ -74,10 +74,10 @@ export function CoreStrategies() {
           viewport={{ once: false, amount: 0.25 }}
           className="max-w-3xl mb-16"
         >
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            Three Ways We Help Investors <span className="text-primary">Source Smarter</span>
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            Smarter Property <br className="md:hidden" /> <span className="text-primary">Sourcing</span>
           </motion.h2>
-          <motion.p variants={fadeSlight} className="text-lg text-muted-text">
+          <motion.p variants={fadeSlight} className="text-sm md:text-base text-muted-text max-w-2xl">
             Focused property sourcing for investors, operators and landlords building cashflow through practical UK property strategies.
           </motion.p>
         </motion.div>

@@ -14,16 +14,16 @@ export function Footer() {
               <Image
                 src="/Rent4you-light-mode.png"
                 alt="Rent4uSolutions"
-                width={160}
-                height={40}
-                className="h-8 md:h-10 w-auto object-contain dark:hidden transition-transform duration-300 group-hover:scale-105"
+                width={200}
+                height={48}
+                className="h-10 md:h-12 w-auto object-contain dark:hidden transition-transform duration-300 group-hover:scale-105"
               />
               <Image
                 src="/Rent4you-dark-mode.png"
                 alt="Rent4uSolutions"
-                width={160}
-                height={40}
-                className="h-8 md:h-10 w-auto object-contain hidden dark:block transition-transform duration-300 group-hover:scale-105"
+                width={200}
+                height={48}
+                className="h-10 md:h-12 w-auto object-contain hidden dark:block transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="text-muted-text leading-relaxed mb-8">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView, useSpring, useTransform, animate } from "framer-motion";
 import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 
@@ -56,7 +57,7 @@ export function DealPackDashboard() {
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.1 }}
           variants={fadeUp}
           className="max-w-3xl mx-auto text-center mb-16"
         >
@@ -77,28 +78,28 @@ export function DealPackDashboard() {
         >
           
           {/* MacOS Browser Header */}
-          <div className="flex items-center px-6 py-4 bg-white/40 dark:bg-black/40 border-b border-black/5 dark:border-white/5">
-            <div className="flex gap-2">
-              <div className="w-3.5 h-3.5 rounded-full bg-red-400"></div>
-              <div className="w-3.5 h-3.5 rounded-full bg-yellow-400"></div>
-              <div className="w-3.5 h-3.5 rounded-full bg-green-400"></div>
+          <div className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-white/40 dark:bg-black/40 border-b border-black/5 dark:border-white/5">
+            <div className="flex gap-2 shrink-0 w-12 md:w-16">
+              <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full bg-red-400"></div>
+              <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full bg-yellow-400"></div>
+              <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full bg-green-400"></div>
             </div>
-            <div className="mx-auto text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase">
+            <div className="flex-1 text-center text-[10px] md:text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase truncate px-2">
               investor-report-sa-lpl-092.pdf
             </div>
-            <div className="w-14"></div>
+            <div className="w-12 md:w-16 shrink-0"></div>
           </div>
 
           <div className="p-6 md:p-10 lg:p-12">
             <motion.div variants={cardReveal} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
               <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 flex items-center justify-center border border-primary/20 shadow-inner">
+                <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 flex items-center justify-center border border-primary/20 shadow-inner">
                   <FileText className="text-primary" size={32} weight="duotone" />
                 </div>
                 <div>
                   <h3 className="font-bold text-2xl md:text-3xl tracking-tight text-slate-900 dark:text-white mb-2">Investment Report</h3>
                   <p className="text-slate-500 dark:text-slate-400 text-sm font-medium flex items-center gap-2">
-                    Ref: SA-LPL-092 <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700"></span> Issued Today
+                    Ref: SA-LPL-092 | Issued Today
                   </p>
                 </div>
               </div>
@@ -115,9 +116,10 @@ export function DealPackDashboard() {
                   <HouseLine size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Property & Area</span>
                 </div>
-                <div className="w-full h-40 rounded-2xl bg-slate-100 dark:bg-slate-800 overflow-hidden relative shadow-inner flex-shrink-0">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-50 dark:from-slate-700 dark:to-slate-800"></div>
-                  <div className="absolute bottom-3 left-3 px-3 py-1.5 bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">
+                <div className="w-full h-40 rounded-2xl overflow-hidden relative shadow-inner flex-shrink-0">
+                  <Image src="/card1.jpg" alt="Liverpool City Centre Property" fill className="object-cover" unoptimized />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 px-3 py-1.5 bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm z-10">
                     Liverpool City Centre
                   </div>
                 </div>

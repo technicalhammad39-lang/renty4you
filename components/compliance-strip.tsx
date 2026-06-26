@@ -107,7 +107,7 @@ export function ComplianceStrip() {
                     alt="Rent4uSolutions Compliance Registrations" 
                     width={800}
                     height={200}
-                    className="h-14 md:h-24 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                    className="h-10 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
                     unoptimized
                   />
                 </div>
