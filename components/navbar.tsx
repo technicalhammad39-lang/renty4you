@@ -87,8 +87,8 @@ export function Navbar() {
       <nav
         className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled
-            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-3 px-6 md:px-8"
-            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-4 px-6 md:px-10"
+            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-2.5 md:py-3 px-5 md:px-8"
+            : "bg-white/75 backdrop-blur-md border-white/15 shadow-md py-3 md:py-4 px-5 md:px-10"
         }`}
       >
         <Link href="#" className="flex items-center gap-1 group">
@@ -216,9 +216,15 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-[calc(100%+0.75rem)] left-4 right-4 bg-white/95  backdrop-blur-xl border border-white/20 px-6 py-6 shadow-2xl rounded-3xl flex flex-col gap-4 animate-[fadeIn_0.2s_ease-out]">
-            {navLinks.map((link) => {
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden absolute top-[calc(100%+0.75rem)] left-4 right-4 bg-white dark:bg-slate-900 border border-border-subtle px-6 py-6 shadow-2xl rounded-3xl flex flex-col gap-4 z-50">
+              {navLinks.map((link) => {
               const hasChildren = !!link.children;
               const isAccordionOpen = link.name === "Strategies" ? mobileStrategiesOpen : mobileDealPacksOpen;
               const toggleAccordion = () => {
@@ -287,8 +293,9 @@ export function Navbar() {
             >
               Join Investor List
             </Link>
-          </div>
+          </motion.div>
         )}
+        </AnimatePresence>
       </nav>
     </div>
   );

@@ -69,13 +69,13 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/80 via-[#030712]/50 to-transparent z-0"></div>
       <div className="absolute inset-0 bg-[rgba(3,7,18,0.65)] z-0"></div>
 
-      <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12 py-32">
-        <div ref={textRef} className="w-full text-white flex flex-col gap-2 md:gap-4">
+      <div className="relative z-10 h-full flex flex-col justify-center w-full px-4 md:px-8 xl:px-12 py-32 md:py-32">
+        <div ref={textRef} className="w-full text-white flex flex-col gap-3 md:gap-4 pb-16 md:pb-0">
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] text-white max-w-4xl text-left"
+            className="text-[32px] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15] text-white max-w-4xl text-left"
           >
             Compliant Council Leasing & Airbnb Deals That Generate Real Cashflow
           </motion.h1>
@@ -84,7 +84,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl text-left"
+            className="text-[15px] sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-xl text-left mt-2"
           >
             We source compliant, cashflow-focused Rent-to-Rent, Airbnb, and Council Sourcing opportunities across the UK for premium property investors.
           </motion.p>
@@ -93,17 +93,17 @@ export function Hero() {
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4 mt-1 md:mt-2"
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-6 z-20"
           >
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-              className="px-8 py-4 brand-gradient text-white rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-1 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 brand-gradient text-white rounded-full font-bold text-[15px] transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-1 cursor-pointer flex justify-center items-center"
             >
               Join Investor List
             </button>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-sm transition-all hover:-translate-y-1 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-[15px] transition-all hover:-translate-y-1 cursor-pointer flex justify-center items-center"
             >
               Book Discovery Call
             </button>

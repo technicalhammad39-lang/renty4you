@@ -62,7 +62,14 @@ export function subscribeToOpportunities(callback: (opportunities: Opportunity[]
     if (snapshot.empty) {
       callback(mockOpportunities as Opportunity[]);
     } else {
-      callback(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Opportunity)));
+      callback(snapshot.docs.map(doc => {
+        const data = doc.data();
+        return { 
+          id: doc.id, 
+          ...data,
+          createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt 
+        } as Opportunity;
+      }));
     }
   }, (error) => {
     console.error("Error fetching listings", error);
@@ -77,7 +84,14 @@ export async function getOpportunities(): Promise<Opportunity[]> {
     const q = query(collection(db, "listings"), orderBy("createdAt", "desc"));
     const snapshot = await getDocs(q);
     if (snapshot.empty) return mockOpportunities as Opportunity[]; 
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Opportunity));
+    return snapshot.docs.map(doc => {
+      const data = doc.data();
+      return { 
+        id: doc.id, 
+        ...data,
+        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt 
+      } as Opportunity;
+    });
   } catch (error) {
     return mockOpportunities as Opportunity[];
   }
@@ -89,7 +103,13 @@ export async function getOpportunityBySlug(slug: string): Promise<Opportunity | 
     const q = query(collection(db, "listings"), where("slug", "==", slug), limit(1));
     const snapshot = await getDocs(q);
     if (snapshot.empty) return (mockOpportunities.find(o => o.slug === slug) as Opportunity) || null;
-    return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Opportunity;
+    
+    const data = snapshot.docs[0].data();
+    return { 
+      id: snapshot.docs[0].id, 
+      ...data,
+      createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt 
+    } as Opportunity;
   } catch (error) {
     return (mockOpportunities.find(o => o.slug === slug) as Opportunity) || null;
   }

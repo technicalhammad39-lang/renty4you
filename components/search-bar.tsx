@@ -113,7 +113,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
   return (
     <motion.div layoutId="search-container" layout transition={{ type: "spring", stiffness: 300, damping: 30 }} className="w-full relative">
       {/* Airbnb style Search Panel */}
-      <div className="w-full bg-white border border-border-subtle rounded-3xl md:rounded-full p-2 shadow-xl md:shadow-2xl grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
+      <div className="w-full bg-white border border-border-subtle rounded-full p-2 shadow-xl md:shadow-2xl flex overflow-x-auto snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-4 md:overflow-visible gap-2 md:gap-0 divide-x divide-border-subtle/50 text-slate-900 items-center relative z-40">
         
         {/* WHERE FILTER */}
         <div 
@@ -123,7 +123,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setStrategyOpen(false);
             setCashflowOpen(false);
           }}
-          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <MapPin size={22} weight="duotone" />
@@ -179,7 +179,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setCashflowOpen(false);
           }}
-          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <HouseLine size={22} weight="duotone" />
@@ -239,7 +239,7 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
             setWhereOpen(false);
             setStrategyOpen(false);
           }}
-          className="flex items-center gap-8 px-6 py-4 cursor-pointer hover:bg-black/5 rounded-3xl md:rounded-full transition-all relative text-left h-full"
+          className="shrink-0 w-[200px] md:w-auto snap-start flex items-center gap-4 md:gap-8 px-5 md:px-6 py-2 md:py-4 cursor-pointer hover:bg-black/5 rounded-full transition-all relative text-left h-full"
         >
           <div className="text-primary">
             <CurrencyGbp size={22} weight="duotone" />
@@ -287,11 +287,11 @@ export function SearchBar({ variant = "full" }: { variant?: "full" | "compact" }
         </div>
 
         {/* SEARCH BUTTON */}
-        <div className="flex items-center justify-center md:justify-end px-3 py-1">
+        <div className="shrink-0 w-[220px] md:w-auto snap-start flex items-center justify-center md:justify-end px-3 py-1">
           <motion.button
             layoutId="search-button"
             onClick={handleSearch}
-            className="w-full md:w-auto px-6 py-4 rounded-full bg-primary text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(212,160,23,0.5)] active:scale-95 cursor-pointer"
+            className="w-full px-6 py-4 rounded-full bg-primary text-white font-bold text-[13px] md:text-sm flex items-center justify-center gap-2 hover:bg-primary-hover transition-all hover:shadow-[0_0_20px_rgba(212,160,23,0.5)] active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <MagnifyingGlass size={18} weight="bold" />
             <motion.span layoutId="search-text">Search Sourced Deals</motion.span>

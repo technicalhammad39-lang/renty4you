@@ -93,16 +93,26 @@ export function ComplianceStrip() {
         </div>
 
         <div ref={cardsRef} className="w-full mt-10">
-          {/* Visible Image for Users */}
-          <div className="w-full relative flex justify-center">
-            <Image 
-              src="/register.png" 
-              alt="Rent4uSolutions Compliance Registrations including PRS and ICO" 
-              width={1920}
-              height={600}
-              className="w-full h-auto object-cover border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm" 
-              unoptimized
-            />
+          {/* Visible Image for Users (Infinite Marquee) */}
+          <div className="w-full relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded-2xl md:rounded-3xl shadow-sm bg-white dark:bg-slate-900/50 py-6 md:py-10 flex items-center">
+            {/* Gradient masks for smooth fading edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
+            
+            <div className="flex w-max animate-marquee items-center">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="flex shrink-0 items-center justify-center px-6 md:px-12">
+                  <Image 
+                    src="/register.png" 
+                    alt="Rent4uSolutions Compliance Registrations" 
+                    width={800}
+                    height={200}
+                    className="h-14 md:h-24 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                    unoptimized
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Hidden Content for SEO */}

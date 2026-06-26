@@ -61,7 +61,7 @@ export default async function OpportunityDetailPage({ params }: Props) {
   };
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black pt-28 pb-24">
+    <main className="min-h-screen bg-white dark:bg-black pt-32 pb-24">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -71,23 +71,23 @@ export default async function OpportunityDetailPage({ params }: Props) {
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Header Section */}
-        <div className="mb-8">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        <div className="mb-10">
+          <div className="flex flex-wrap items-center gap-3 mb-5">
+            <span className="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold flex items-center gap-1.5 uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
               {opportunity.strategy}
             </span>
             <span className="text-slate-500 dark:text-slate-400 text-sm font-semibold flex items-center gap-1">
-              <MapPin size={16} weight="fill" /> {opportunity.location}
+              <MapPin size={18} weight="fill" className="text-slate-400" /> {opportunity.location}
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white mb-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-2 leading-[1.1]">
             {opportunity.title}
           </h1>
         </div>
 
         {/* Hero Image Gallery (Airbnb Style) */}
-        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-3 h-[400px] md:h-[500px] rounded-[32px] overflow-hidden mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-3 md:gap-4 h-[400px] md:h-[500px] lg:h-[550px] rounded-[32px] lg:rounded-[40px] overflow-hidden mb-16 shadow-xl">
           {/* Main Large Image */}
           <div className="md:col-span-2 row-span-2 relative h-full w-full bg-slate-100 dark:bg-slate-800">
             <Image 

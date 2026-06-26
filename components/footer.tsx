@@ -75,7 +75,8 @@ export function Footer() {
               <div className="text-xs text-muted-text mb-3 font-medium uppercase tracking-wider">Developed By</div>
               <a href="https://hammadtools.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between group-hover:opacity-90 transition-opacity">
                 <div className="flex items-center gap-3">
-                  <Image src="/hammadlogo.png" alt="Hammad Tools" width={120} height={32} className="object-contain h-8 w-auto" />
+                  <Image src="/hammadlogo.png" alt="Hammad Tools" width={32} height={32} className="object-contain h-8 w-8 rounded-full" />
+                  <span className="text-xl font-bold text-primary group-hover:text-[#20bd5a] transition-colors">Hammad Tools</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform text-primary">
                   <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path>

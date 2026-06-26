@@ -1,70 +1,80 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useSpring, useTransform, animate } from "framer-motion";
 import { ChartBar, CurrencyGbp, FileText, HouseLine, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const cardStagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+};
+
+function AnimatedNumber({ value }: { value: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(0, value, {
+        duration: 1.5,
+        ease: "easeOut",
+        onUpdate(v) {
+          setDisplayValue(Math.round(v));
+        }
+      });
+      return controls.stop;
+    } else {
+      setDisplayValue(0); // Reset when out of view
+    }
+  }, [isInView, value]);
+
+  return <span ref={ref}>{displayValue.toLocaleString()}</span>;
+}
 
 export function DealPackDashboard() {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const dashRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 40, filter: "blur(16px)" },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-
-      if (dashRef.current) {
-        const blocks = dashRef.current.querySelectorAll(".dash-block");
-
-        gsap.fromTo(
-          blocks,
-          { opacity: 0, scale: 0.95, y: 20 },
-          {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: dashRef.current,
-              start: "top 75%",
-            },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const circleRef = useRef(null);
+  const circleInView = useInView(circleRef, { once: false, amount: 0.5 });
 
   return (
     <section id="deal-packs" ref={sectionRef} className="py-24 bg-surface relative z-10 overflow-hidden">
       <div className="w-full px-4 md:px-8 xl:px-12">
-        <div ref={titleRef} className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.25 }}
+          variants={fadeUp}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
             Inside Every <span className="text-primary">Deal Pack</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
             Every opportunity is packaged like a clear investor report, helping you understand the property, numbers, assumptions, risks and next steps before committing.
           </p>
-        </div>
+        </motion.div>
 
-        <div ref={dashRef} className="relative w-full mx-auto rounded-[32px] bg-white/60 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }}
+          variants={cardStagger}
+          className="relative w-full mx-auto rounded-[32px] bg-white/60 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden"
+        >
           
           {/* MacOS Browser Header */}
           <div className="flex items-center px-6 py-4 bg-white/40 dark:bg-black/40 border-b border-black/5 dark:border-white/5">
@@ -76,11 +86,11 @@ export function DealPackDashboard() {
             <div className="mx-auto text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase">
               investor-report-sa-lpl-092.pdf
             </div>
-            <div className="w-14"></div> {/* Spacer for centering */}
+            <div className="w-14"></div>
           </div>
 
           <div className="p-6 md:p-10 lg:p-12">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 dash-block">
+            <motion.div variants={cardReveal} className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-hover/5 flex items-center justify-center border border-primary/20 shadow-inner">
                   <FileText className="text-primary" size={32} weight="duotone" />
@@ -92,20 +102,19 @@ export function DealPackDashboard() {
                   </p>
                 </div>
               </div>
-              <button className="px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(212,160,23,0.3)] hover:shadow-[0_0_30px_rgba(212,160,23,0.5)]">
+              <button className="px-8 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-full font-bold text-sm transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">
                 Review Opportunity
               </button>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 relative">
+            <motion.div variants={cardStagger} className="grid grid-cols-1 md:grid-cols-12 gap-8 relative">
               
               {/* Row 1, Col 1 - Property */}
-              <div className="col-span-1 md:col-span-4 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col gap-6 relative z-10">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col gap-6 relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
                   <HouseLine size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Property & Area</span>
                 </div>
-                {/* Mockup Image Placeholder */}
                 <div className="w-full h-40 rounded-2xl bg-slate-100 dark:bg-slate-800 overflow-hidden relative shadow-inner flex-shrink-0">
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-50 dark:from-slate-700 dark:to-slate-800"></div>
                   <div className="absolute bottom-3 left-3 px-3 py-1.5 bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">
@@ -123,12 +132,11 @@ export function DealPackDashboard() {
                     Very High
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Row 1, Col 2 - Financials */}
-              <div className="col-span-1 md:col-span-4 dash-block p-1.5 rounded-[2rem] bg-gradient-to-b from-primary/40 via-accent/10 to-transparent shadow-xl relative z-10 flex flex-col">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-1.5 rounded-[2rem] bg-gradient-to-b from-primary/40 via-accent/10 to-transparent shadow-xl relative z-10 flex flex-col">
                 <div className="h-full w-full rounded-[1.8rem] bg-white dark:bg-slate-900 p-8 flex flex-col relative overflow-hidden">
-                  {/* Sparkline background effect */}
                   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
                   
                   <div className="flex items-center gap-3 text-primary mb-10 relative z-10">
@@ -149,16 +157,18 @@ export function DealPackDashboard() {
                     <div className="pt-6 pb-2 mt-auto">
                       <span className="text-xs font-bold uppercase tracking-widest text-primary block mb-2">Net Cashflow</span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white">£1,050</span>
+                        <span className="text-5xl font-black tracking-tighter text-slate-900 dark:text-white">
+                          £<AnimatedNumber value={1050} />
+                        </span>
                         <span className="text-xl font-bold text-slate-400">/mo</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Row 1 & 2, Col 3 - Risks */}
-              <div className="col-span-1 md:col-span-4 md:row-span-2 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col h-full relative z-10">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 md:row-span-2 p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 mb-6">
                   <ChartBar size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Risks & Assumptions</span>
@@ -196,10 +206,10 @@ export function DealPackDashboard() {
                     <div className="h-2 w-4/6 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Row 2, Col 1 - Compliance */}
-              <div className="col-span-1 md:col-span-4 dash-block p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col relative z-10">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-8 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-lg flex flex-col relative z-10">
                 <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300 mb-6 flex-shrink-0">
                   <ShieldCheck size={24} weight="duotone" className="text-primary" /> 
                   <span className="font-bold tracking-tight text-lg">Compliance Notes</span>
@@ -214,56 +224,53 @@ export function DealPackDashboard() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
               {/* Row 2, Col 2 - Break-even Occupancy */}
-              <div className="col-span-1 md:col-span-4 dash-block p-6 rounded-[24px] bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-6 relative z-10">
+              <motion.div variants={cardReveal} className="col-span-1 md:col-span-4 p-6 rounded-[24px] bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-6 relative z-10">
                  <div className="flex justify-between items-center w-full px-2">
                   <span className="font-semibold text-slate-600 dark:text-slate-400 text-sm">Break-even Occupancy</span>
                   <span className="font-bold text-slate-900 dark:text-white text-base">65%</span>
                  </div>
-                 <div className="relative w-48 h-48 flex-shrink-0 drop-shadow-sm mb-4">
+                 <div className="relative w-48 h-48 flex-shrink-0 drop-shadow-sm mb-4" ref={circleRef}>
                    <svg className="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 42 42">
-                     {/* Occupancy (65%) */}
-                     <circle
+                     <motion.circle
                        cx="21"
                        cy="21"
                        r="15.9155"
-                       className="text-primary hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer"
+                       className="text-primary"
                        strokeWidth="8"
-                       strokeDasharray="65 100"
-                       strokeDashoffset="0"
                        stroke="currentColor"
                        fill="none"
+                       initial={{ strokeDasharray: "0 100", strokeDashoffset: "0" }}
+                       animate={circleInView ? { strokeDasharray: "65 100", strokeDashoffset: "0" } : { strokeDasharray: "0 100", strokeDashoffset: "0" }}
+                       transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
                      >
                        <title>Break-even Occupancy: 65%</title>
-                     </circle>
-                     {/* Vacancy (35%) */}
-                     <circle
+                     </motion.circle>
+                     <motion.circle
                        cx="21"
                        cy="21"
                        r="15.9155"
-                       className="text-slate-200 dark:text-slate-700 hover:scale-[1.06] hover:drop-shadow-xl transition-all duration-300 origin-center cursor-pointer"
+                       className="text-slate-200 dark:text-slate-700"
                        strokeWidth="8"
-                       strokeDasharray="35 100"
-                       strokeDashoffset="-65"
                        stroke="currentColor"
                        fill="none"
-                     >
-                       <title>Vacancy Buffer: 35%</title>
-                     </circle>
+                       initial={{ strokeDasharray: "100 100", strokeDashoffset: "0" }}
+                       animate={circleInView ? { strokeDasharray: "35 100", strokeDashoffset: "-65" } : { strokeDasharray: "100 100", strokeDashoffset: "0" }}
+                       transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+                     />
                    </svg>
                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                      <span className="font-black text-slate-900 dark:text-white text-4xl">65%</span>
-                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-0.5">Required</span>
+                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-1">Required</span>
                    </div>
                  </div>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
           </div>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

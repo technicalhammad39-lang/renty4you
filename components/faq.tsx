@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { Plus, X } from "@phosphor-icons/react/dist/ssr";
 
 const FAQS = [
@@ -50,6 +51,19 @@ const FAQS = [
   }
 ];
 
+const blurFade = {
+  hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
+  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -57,28 +71,61 @@ export function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, amount: 0.25 });
+  const headerControls = useAnimation();
+
+  const listRef = useRef(null);
+  const listInView = useInView(listRef, { once: true, amount: 0.1 });
+  const listControls = useAnimation();
+
+  useEffect(() => {
+    if (headerInView) {
+      headerControls.start("visible");
+    }
+  }, [headerInView, headerControls]);
+
+  useEffect(() => {
+    if (listInView) {
+      listControls.start("visible");
+    }
+  }, [listInView, listControls]);
+
   return (
-    <section id="faq" className="py-24 bg-background relative z-10">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+    <section id="faq" className="py-16 md:py-24 bg-background relative z-10 overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 md:px-6">
+        <motion.div 
+          ref={headerRef}
+          initial="hidden"
+          animate={headerControls}
+          variants={blurFade}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div 
+          ref={listRef}
+          initial="hidden"
+          animate={listControls}
+          variants={staggerContainer}
+          className="space-y-4"
+        >
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div 
+              <motion.div 
+                variants={blurFade}
                 key={index} 
                 className={`border border-border-subtle rounded-2xl bg-surface transition-all duration-300 ${isOpen ? "shadow-md border-primary/40" : "hover:border-primary/20"}`}
               >
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-4 md:p-6 text-left focus:outline-none"
                 >
-                  <span className={`font-semibold text-lg transition-colors pr-8 ${isOpen ? "text-primary" : "text-foreground"}`}>
+                  <span className={`font-semibold text-base md:text-lg transition-colors pr-4 md:pr-8 ${isOpen ? "text-primary" : "text-foreground"}`}>
                     {faq.q}
                   </span>
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? "border-primary bg-primary text-white rotate-180" : "border-border-subtle bg-transparent text-muted-text"}`}>
@@ -90,15 +137,15 @@ export function FAQ() {
                   className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-6 pt-0 text-muted-text leading-relaxed">
+                    <div className="p-4 pt-0 md:p-6 md:pt-0 text-sm md:text-base text-muted-text leading-relaxed">
                       {faq.a}
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
