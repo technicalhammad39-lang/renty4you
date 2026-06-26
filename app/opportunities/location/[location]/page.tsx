@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
-import OpportunitiesClient from "../opportunities-client";
+import OpportunitiesClient from "../../opportunities-client";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
 import { Opportunity } from "@/lib/firebase/firestore";
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Property Sourcing & Investment Deals in ${loc} | Rent4uSolutions`,
     description: `Discover high-yield property investment opportunities in ${loc}. Explore exclusive rent-to-rent, serviced accommodation, and council leasing deals in the ${loc} area.`,
     alternates: {
-      canonical: `https://rent4usolutions.com/opportunities/${location.toLowerCase()}`,
+      canonical: `https://rent4usolutions.com/opportunities/location/${location.toLowerCase()}`,
     }
   };
 }
