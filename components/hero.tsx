@@ -54,7 +54,7 @@ export function Hero({
     return () => ctx.revert();
   }, []);
 
-  const heightClass = compact ? "h-[40vh] min-h-[320px] md:min-h-[360px]" : "h-[85vh] min-h-[650px]";
+  const heightClass = compact ? "h-[45vh] min-h-[380px] md:min-h-[420px]" : "h-[85vh] min-h-[650px]";
 
   return (
     <div ref={containerRef} className={`sticky top-0 left-0 w-full ${heightClass} overflow-hidden z-0 bg-black flex flex-col justify-center`}>
@@ -82,8 +82,8 @@ export function Hero({
       <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/80 via-[#030712]/50 to-transparent z-0"></div>
       <div className="absolute inset-0 bg-[rgba(3,7,18,0.65)] z-0"></div>
 
-      <div className={`relative z-10 w-full px-4 sm:px-6 md:px-8 xl:px-12 ${compact ? "pt-24 pb-12" : "pt-28 pb-16"} md:pt-0 md:pb-0 flex flex-col justify-center mt-8 md:mt-0`}>
-        <div ref={textRef} className="w-full text-white flex flex-col gap-4 md:gap-5">
+      <div className={`relative z-10 w-full px-4 sm:px-6 md:px-8 xl:px-12 ${compact ? "py-12 md:py-0" : "pt-16 pb-24 md:py-0"} flex flex-col justify-center h-full`}>
+        <div ref={textRef} className={`w-full text-white flex flex-col ${compact ? "gap-2" : "gap-4 md:gap-5"} -mt-4`}>
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -97,7 +97,7 @@ export function Hero({
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-gray-300 leading-relaxed text-left mt-1 md:mt-2 ${compact ? "max-w-2xl text-sm sm:text-base" : "max-w-xl text-sm sm:text-base md:text-lg"}`}
+            className={`text-gray-300 leading-relaxed text-left ${compact ? "max-w-2xl text-sm sm:text-base mt-0" : "max-w-xl text-sm sm:text-base md:text-lg mt-1 md:mt-2"}`}
           >
             {subtitle || "We source compliant, cashflow-focused Rent-to-Rent, Airbnb, and Council Sourcing opportunities across the UK for premium property investors."}
           </motion.p>

@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
     title: 'Rent4uSolutions | UK Property Sourcing & Investment',
     description: 'Discover compliant UK property sourcing opportunities including rent-to-rent, serviced accommodation and council leasing deals.',

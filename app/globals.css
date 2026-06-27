@@ -43,7 +43,7 @@
 }
 
 @utility brand-gradient {
-  background-image: linear-gradient(135deg, #15803D 0%, #22C55E 50%, #4ADE80 100%);
+  background-image: linear-gradient(135deg, #166534 0%, #15803D 50%, #22C55E 100%);
 }
 
 @layer base {

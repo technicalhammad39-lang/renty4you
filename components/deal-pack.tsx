@@ -68,7 +68,7 @@ export function DealPackDashboard() {
             Inside Every <span className="text-primary">Deal Pack</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Every opportunity is packaged like a clear investor report, helping you understand the property, numbers, assumptions, risks and next steps before committing.
+            Understand the property, numbers, assumptions, risks, and next steps before committing.
           </p>
         </motion.div>
 

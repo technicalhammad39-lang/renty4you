@@ -83,7 +83,7 @@ export function Navbar() {
   ];
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 px-4 md:px-6 transition-all duration-300">
+    <div className="fixed top-5 left-0 right-0 z-50 px-4 md:px-6 transition-all duration-300">
       <nav
         className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled

@@ -84,34 +84,24 @@ export function ComplianceStrip() {
     >
       <div className="w-full px-4 md:px-8 xl:px-12">
         <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
             Built For Investors Who Care About <span className="text-primary">Compliance</span>
           </h2>
           <p className="text-lg text-muted-text">
-            Clear assumptions, sourcing-level checks, and professional due diligence on every opportunity.
+            Professional due diligence on every opportunity.
           </p>
         </div>
 
-        <div ref={cardsRef} className="w-[calc(100%+2rem)] -mx-4 md:w-full md:mx-0 mt-8 md:mt-10">
+        <div ref={cardsRef} className="mt-8 md:mt-10 relative left-1/2 -translate-x-1/2 w-screen">
           {/* Visible Image for Users (Infinite Marquee) */}
           <div className="w-full relative overflow-hidden border-y border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900/50 py-5 md:py-10 flex items-center">
             {/* Gradient masks for smooth fading edges */}
             <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-white dark:from-slate-900/50 to-transparent z-10 pointer-events-none"></div>
-            
-            <div className="flex w-max animate-marquee items-center">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="flex shrink-0 items-center justify-center px-6 md:px-12">
-                  <Image 
-                    src="/register.png" 
-                    alt="Rent4uSolutions Compliance Registrations" 
-                    width={800}
-                    height={200}
-                    className="h-10 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
-                    unoptimized
-                  />
-                </div>
-              ))}
+
+            <div className="flex animate-[marquee_20s_linear_infinite] whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">
+              <Image src="/register.png" alt="Compliance PRS" width={800} height={180} className="object-contain h-[100px] md:h-[150px] w-auto shrink-0 mix-blend-darken dark:mix-blend-screen" unoptimized />
+              <Image src="/register.png" alt="Compliance PRS" width={800} height={180} className="object-contain h-[100px] md:h-[150px] w-auto shrink-0 mix-blend-darken dark:mix-blend-screen" unoptimized />
             </div>
           </div>
 
