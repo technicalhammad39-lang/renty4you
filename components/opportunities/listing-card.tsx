@@ -12,6 +12,7 @@ interface ListingCardProps {
 
 export function ListingCard({ opportunity }: ListingCardProps) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [imgSrc, setImgSrc] = useState(opportunity.images && opportunity.images.length > 0 ? opportunity.images[0] : 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1665&auto=format&fit=crop');
 
   return (
     <div className="group relative flex flex-col bg-white dark:bg-[#0f172a] rounded-[24px] border border-border-subtle hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] h-full mt-4">
@@ -27,9 +28,10 @@ export function ListingCard({ opportunity }: ListingCardProps) {
       {/* Image Gallery / Hero Image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-[24px] bg-slate-100 dark:bg-slate-800">
         <Image
-          src={opportunity.images && opportunity.images.length > 0 ? opportunity.images[0] : 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1665&auto=format&fit=crop'}
+          src={imgSrc}
           alt={opportunity.title}
           fill
+          onError={() => setImgSrc('https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1665&auto=format&fit=crop')}
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
