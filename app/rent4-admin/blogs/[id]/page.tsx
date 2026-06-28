@@ -7,8 +7,7 @@ import { db } from '@/lib/firebase/config';
 import { ArrowLeft, Save, Loader2, Bold, Italic, Heading1, Heading2, List, ListOrdered, Quote, Image as ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Blog } from '@/lib/firebase/firestore';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { RichTextEditor } from '@/components/admin/rich-text-editor';
 
 export default function BlogEditor({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
@@ -28,19 +27,7 @@ export default function BlogEditor({ params }: { params: Promise<{ id: string }>
     content: '',
   });
 
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: formData.content,
-    editorProps: {
-      attributes: {
-        class: 'prose prose-invert max-w-none focus:outline-none min-h-[300px] p-4 bg-[#1a1a1a] rounded-b-lg border-x border-b border-white/10',
-      },
-    },
-    onUpdate: ({ editor }) => {
-      handleChange('content', editor.getHTML());
-    },
-  });
-
+  // Removed inline editor
   useEffect(() => {
     if (!isNew && db) {
       const fetchDoc = async () => {
@@ -50,7 +37,6 @@ export default function BlogEditor({ params }: { params: Promise<{ id: string }>
           if (snap.exists()) {
             const data = snap.data() as Partial<Blog>;
             setFormData(data);
-            editor?.commands.setContent(data.content || '');
           }
         } catch (err) {
           console.error(err);
@@ -60,7 +46,7 @@ export default function BlogEditor({ params }: { params: Promise<{ id: string }>
       };
       fetchDoc();
     }
-  }, [isNew, resolvedParams.id, editor]);
+  }, [isNew, resolvedParams.id]);
 
   const handleChange = (field: string, value: any /* eslint-disable-line */) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -136,21 +122,12 @@ export default function BlogEditor({ params }: { params: Promise<{ id: string }>
 
             <div className="pt-4">
               <label className="block text-sm font-medium text-white/70 mb-1.5">Body</label>
-              {/* Tiptap Toolbar */}
-              {editor && (
-                <div className="flex items-center gap-1 bg-[#1a1a1a] border border-white/10 rounded-t-lg p-2 flex-wrap">
-                  <button type="button" onClick={() => editor.chain().focus().toggleBold().run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('bold') ? 'bg-white/10 text-primary' : 'text-white/70'}`}><Bold size={16} /></button>
-                  <button type="button" onClick={() => editor.chain().focus().toggleItalic().run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('italic') ? 'bg-white/10 text-primary' : 'text-white/70'}`}><Italic size={16} /></button>
-                  <div className="w-px h-4 bg-white/10 mx-1"></div>
-                  <button type="button" onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('heading', { level: 1 }) ? 'bg-white/10 text-primary' : 'text-white/70'}`}><Heading1 size={16} /></button>
-                  <button type="button" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('heading', { level: 2 }) ? 'bg-white/10 text-primary' : 'text-white/70'}`}><Heading2 size={16} /></button>
-                  <div className="w-px h-4 bg-white/10 mx-1"></div>
-                  <button type="button" onClick={() => editor.chain().focus().toggleBulletList().run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('bulletList') ? 'bg-white/10 text-primary' : 'text-white/70'}`}><List size={16} /></button>
-                  <button type="button" onClick={() => editor.chain().focus().toggleOrderedList().run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('orderedList') ? 'bg-white/10 text-primary' : 'text-white/70'}`}><ListOrdered size={16} /></button>
-                  <button type="button" onClick={() => editor.chain().focus().toggleBlockquote().run()} className={`p-1.5 rounded hover:bg-white/10 ${editor.isActive('blockquote') ? 'bg-white/10 text-primary' : 'text-white/70'}`}><Quote size={16} /></button>
-                </div>
-              )}
-              <EditorContent editor={editor} />
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-[#1a1a1a]">
+                <RichTextEditor 
+                  content={formData.content || ''} 
+                  onChange={(html) => handleChange('content', html)} 
+                />
+              </div>
             </div>
           </div>
         </div>

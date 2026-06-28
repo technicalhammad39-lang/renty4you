@@ -328,6 +328,37 @@ export default async function OpportunityDetailPage({ params }: Props) {
                     <li className="flex items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-slate-50 dark:border-slate-700/50"><CheckCircle size={20} weight="fill" className="text-emerald-500" /> Block Management Lease Check</li>
                   </ul>
                 </div>
+
+                {/* Google Maps Embed */}
+                <div className="bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-inner overflow-hidden">
+                  <h3 className="font-bold text-xl mb-5 flex items-center gap-2 dark:text-white">
+                    <MapPin size={24} weight="fill" className="text-primary" /> Property Location
+                  </h3>
+                  <div className="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 relative bg-slate-200 dark:bg-slate-800">
+                    {(opportunity.mapCoordinates?.lat && opportunity.mapCoordinates?.lng) ? (
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        loading="lazy" 
+                        allowFullScreen 
+                        referrerPolicy="no-referrer-when-downgrade" 
+                        src={`https://maps.google.com/maps?q=${opportunity.mapCoordinates.lat},${opportunity.mapCoordinates.lng}&hl=en&z=14&output=embed`}
+                      ></iframe>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-500">
+                        Exact location unlocked in Deal Pack
+                      </div>
+                    )}
+                  </div>
+                  {opportunity.googleMapsLink && (
+                    <div className="mt-4 text-center md:text-right">
+                      <a href={opportunity.googleMapsLink} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover font-medium text-sm">
+                        Open in Google Maps &rarr;
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             </section>
           </div>

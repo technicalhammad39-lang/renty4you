@@ -35,6 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import { ReadingProgressBar } from '@/components/reading-progress-bar';
+
 export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
@@ -70,6 +72,8 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-white dark:bg-black pt-28 pb-24">
+      <ReadingProgressBar />
+      
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"

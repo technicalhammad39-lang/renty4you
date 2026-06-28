@@ -100,14 +100,12 @@ export function Hero({
             className={`text-gray-300 leading-relaxed text-left ${compact ? "max-w-2xl text-sm sm:text-base mt-0" : "max-w-xl text-sm sm:text-base md:text-lg mt-1 md:mt-2"}`}
           >
             {subtitle || "We source compliant, cashflow-focused Rent-to-Rent, Airbnb, and Council Sourcing opportunities across the UK for premium property investors."}
-          </motion.p>
-
-          {showButtons && (
+          </motion.p>          {showButtons && (
             <motion.div
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-4 md:mt-6 z-20"
+              className={`flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-4 md:mt-6 z-20 w-full ${compact ? "" : ""}`}
             >
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
@@ -123,7 +121,7 @@ export function Hero({
               </button>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-                className="group w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-bold text-[15px] transition-all hover:-translate-y-1 cursor-pointer flex justify-center items-center"
+                className="group w-full sm:w-auto px-8 py-4 bg-slate-800/90 hover:bg-slate-700/90 text-white border border-slate-600/50 rounded-full font-bold text-[15px] transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(0,0,0,0.3)] cursor-pointer flex justify-center items-center"
               >
                 <span className="flex items-center gap-2">
                   Book Discovery Call
@@ -135,6 +133,7 @@ export function Hero({
               </button>
             </motion.div>
           )}
+
         </div>
       </div>
     </div>

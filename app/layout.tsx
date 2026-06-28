@@ -86,7 +86,9 @@ const jsonLd = {
 
 import { SearchProvider } from '@/components/search-context';
 import { PresenceTracker } from '@/components/presence-tracker';
+import { PushNotificationPrompt } from '@/components/push-notification-prompt';
 import Script from 'next/script';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={pjs.variable} suppressHydrationWarning>
@@ -101,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <SearchProvider>
             <PresenceTracker />
+            <PushNotificationPrompt />
             {children}
           </SearchProvider>
         </Providers>

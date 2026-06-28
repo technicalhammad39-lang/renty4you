@@ -20,6 +20,8 @@ export default function ListingEditor({ params }: { params: Promise<{ id: string
     title: '',
     slug: '',
     location: '',
+    mapCoordinates: { lat: 51.5074, lng: -0.1278 },
+    googleMapsLink: '',
     strategy: 'Serviced Accommodation',
     propertyType: '',
     budget: 0,
@@ -195,6 +197,24 @@ export default function ListingEditor({ params }: { params: Promise<{ id: string
         </div>
 
         <div className="space-y-6">
+          <div className="bg-[#111] border border-white/10 rounded-xl p-6 space-y-4">
+            <h2 className="text-lg font-semibold border-b border-white/10 pb-4 mb-4">Google Maps</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-white/70 mb-1.5">Latitude</label>
+                <input required type="number" step="any" value={formData.mapCoordinates?.lat || 0} onChange={e => handleChange('mapCoordinates.lat', Number(e.target.value))} className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-white/70 mb-1.5">Longitude</label>
+                <input required type="number" step="any" value={formData.mapCoordinates?.lng || 0} onChange={e => handleChange('mapCoordinates.lng', Number(e.target.value))} className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors" />
+              </div>
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-white/70 mb-1.5">Google Maps Link (Optional)</label>
+                <input type="text" value={formData.googleMapsLink || ''} onChange={e => handleChange('googleMapsLink', e.target.value)} placeholder="e.g. https://maps.app.goo.gl/..." className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors" />
+              </div>
+            </div>
+          </div>
+
           <div className="bg-[#111] border border-white/10 rounded-xl p-6 space-y-4">
             <h2 className="text-lg font-semibold border-b border-white/10 pb-4 mb-4">Configuration</h2>
             <div>

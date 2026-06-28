@@ -25,6 +25,12 @@ const remotePatterns: any[] = [
     port: '',
     pathname: '/**',
   },
+  {
+    protocol: 'https',
+    hostname: 'rent4u.hammadtools.com',
+    port: '',
+    pathname: '/**',
+  },
 ];
 
 if (uploadHostname) {

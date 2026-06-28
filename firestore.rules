@@ -28,6 +28,11 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    match /subscriptions/{document} {
+      allow create: if true; // Public can subscribe to push notifications
+      allow read, update, delete: if isAdmin();
+    }
+
     // Protect all other collections (settings, admins, users)
     match /{document=**} {
       allow read, write: if isAdmin();

@@ -187,12 +187,20 @@ export function Navbar() {
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
               </button>
             )}
-            <Link
-              href="#contact"
-              className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-xs lg:text-sm shadow-md transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 active:scale-95"
-            >
-              Join Investor List
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                href="#contact"
+                className="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-900 hover:bg-slate-50 font-bold text-xs lg:text-sm shadow-sm transition-all hover:-translate-y-0.5 active:scale-95"
+              >
+                Book Discovery Call
+              </Link>
+              <Link
+                href="#contact"
+                className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-xs lg:text-sm shadow-md transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 active:scale-95"
+              >
+                Join Investor List
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -286,13 +294,22 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              href="#contact"
-              className="mt-2 w-full text-center py-3 rounded-2xl bg-primary hover:bg-primary-hover text-white font-bold shadow-md transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Join Investor List
-            </Link>
+            <div className="flex flex-col gap-2 mt-2">
+              <Link
+                href="#contact"
+                className="w-full text-center py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 font-bold shadow-sm transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Book Discovery Call
+              </Link>
+              <Link
+                href="#contact"
+                className="w-full text-center py-3 rounded-2xl bg-primary hover:bg-primary-hover text-white font-bold shadow-md transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Join Investor List
+              </Link>
+            </div>
           </motion.div>
         )}
         </AnimatePresence>

@@ -9,6 +9,11 @@ export interface Opportunity {
   location: string;
   strategy: 'Serviced Accommodation' | 'Council Leasing' | 'Rent-to-Rent';
   propertyType: string;
+  mapCoordinates?: {
+    lat: number;
+    lng: number;
+  };
+  googleMapsLink?: string;
   budget: number;
   rentRange: string;
   estimatedCashflow: string;

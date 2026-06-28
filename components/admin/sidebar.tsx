@@ -10,6 +10,7 @@ import {
   Mail, 
   Users, 
   Image as ImageIcon, 
+  Bell,
   Settings, 
   LogOut 
 } from 'lucide-react';
@@ -23,6 +24,7 @@ const navItems = [
   { name: 'Newsletter', href: '/rent4-admin/newsletter', icon: Mail },
   { name: 'Contacts & Leads', href: '/rent4-admin/contacts', icon: Users },
   { name: 'Media Library', href: '/rent4-admin/media', icon: ImageIcon },
+  { name: 'Notifications', href: '/rent4-admin/notifications', icon: Bell },
   { name: 'Settings', href: '/rent4-admin/settings', icon: Settings },
 ];
 

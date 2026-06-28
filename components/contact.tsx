@@ -132,6 +132,24 @@ export function Contact() {
           </motion.div>
 
         </div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={itemReveal}
+          className="mt-16 w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden border border-border-subtle/50 shadow-sm relative bg-surface"
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=London,UK&hl=en&z=12&output=embed"
+          ></iframe>
+        </motion.div>
       </div>
     </section>
   );
