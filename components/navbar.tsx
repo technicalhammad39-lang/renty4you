@@ -87,7 +87,7 @@ export function Navbar() {
       <nav
         className={`w-full rounded-full border transition-all duration-300 flex items-center justify-between ${
           scrolled
-            ? "bg-white/90 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-1.5 md:py-2 px-5 md:px-8"
+            ? "bg-gradient-to-t from-emerald-50/90 to-white/95 backdrop-blur-lg border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.12)] py-1.5 md:py-2 px-5 md:px-8"
             : "bg-white/95 md:bg-white/75 backdrop-blur-md border-white/15 shadow-md py-2 md:py-2.5 px-5 md:px-8"
         }`}
       >
@@ -178,15 +178,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-4 border-l border-border-subtle pl-4">
             <SearchBar variant="compact" />
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="w-9 h-9 rounded-full bg-white hover:bg-primary/10 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer"
-                aria-label="Toggle Theme"
-              >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-            )}
+            {/* Theme toggle removed per user request */}
             <div className="flex items-center gap-3">
               <Link
                 href="#contact"
@@ -206,15 +198,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-3">
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-500 hover:text-primary transition-colors"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          )}
+          {/* Theme toggle removed per user request */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-9 h-9 rounded-full bg-white/50 border border-border-subtle flex items-center justify-center text-slate-900 hover:text-primary focus:outline-none transition-colors"
